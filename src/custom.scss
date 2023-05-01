@@ -1,0 +1,36 @@
+$black: #1A0F0C;
+$primary: #B05190;
+$secondary: #DE66B6;
+$gray-200: #DBD4D4;
+$gray-500: #9A9190;
+$gray-800: #392E2C;
+$grid-gutter-width: 32px;
+$red: #FC4444;
+$green: #00C9A5;
+$modal-backdrop-bg: $primary;
+$white: rgb(255, 253, 253);
+
+.burn-form{
+    max-width: 500px;
+    background: rgba(255, 253, 253, 0.95);
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid rgba(176, 81, 144, 0.4);
+    box-shadow: 4px 4px 4px rgba(176, 81, 144, 0.25);
+    border-radius: 10px;
+}
+
+input[type=text], input[type=number], input[type=password], input[type=email] {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid $black;
+}
+
+.form-control:focus{
+    box-shadow: 0 0 0 .25rem rgba(176, 81, 144,.25);
+    border: none;
+    border-bottom: 1px solid $primary;
+}
+
+@import "~bootstrap/scss/bootstrap.scss"
