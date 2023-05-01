@@ -15,6 +15,7 @@ Research from existing booking sites' main page
 + Hometogo
 + PLumguide
 
+### planning phaze
 
 # Airbnb
 
@@ -68,3 +69,8 @@ Traditional sites
 + Expedia.no
 
 This seems to be the traditional way of booking stites, it has a large search functionality to grab the attention when you come on the websites. Where a variant of the question "where do you want to go?" is placed in the searchfield. Followed by the time of the stay, and then how many is going to stay. A large search button based on the main color of the site usually blue. 
+
+
+### Planning phaze
+
+I want to create a website that gives off warmth. I want people that visit the page to get the feeling to how it is to use a Bed and Breakfast. I've decided to use polaroid pictures of vacations to "sell" this idea. Mostly because That is a connection that I have with the hollidays. The photos are from friends and family members, I contemplated using AI to generate pictures, but I'm not really a fan of using AI if the final product keeps the "AI-look".
