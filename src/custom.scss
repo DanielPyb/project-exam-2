@@ -33,4 +33,53 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
     border-bottom: 1px solid $primary;
 }
 
+// landing page //
+
+.landing-page {
+    height: 100vh;
+    background: url(images/landing_page.png);
+    background-position: 0px -600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero{
+    min-width: 226px;
+    max-width: 678px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero button{
+    width: 100%;
+    font-size: 48px;
+}
+
+.hero-title {
+    font-size: 120px;
+    color: $white;
+    font-weight: 900;
+    text-shadow: 1px 1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary, -1px -1px 0 $primary, 1px 0px 0 $primary, 0px 1px 0 $primary, -1px 0px 0 , 0px -1px 0 $primary;
+    padding: 0;
+    margin-bottom: 32px;
+}
+
+.hero-text {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 56px;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 32px;
+}
+
+.hero-link a{
+    font-size: 48px;
+    color: $white;
+}
+
+.hero-link a:visited, .hero-link {
+    color: $white;
+}
+
 @import "~bootstrap/scss/bootstrap.scss"
