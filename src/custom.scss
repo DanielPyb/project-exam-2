@@ -13,7 +13,7 @@ $white: rgb(255, 253, 253);
 .burn-form{
     max-width: 500px;
     background: rgba(255, 253, 253, 0.95);
-    margin: 20px;
+    margin: 5px;
     padding: 20px;
     border: 1px solid rgba(176, 81, 144, 0.4);
     box-shadow: 4px 4px 4px rgba(176, 81, 144, 0.25);
@@ -102,6 +102,12 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
     height: 400px;
     object-fit: cover;
     padding: 20px 20px 0px 20px;
+}
+
+#logreg-form{
+    max-width: 500px;
+    margin: auto;
+    height: 100vh;
 }
 
 @import "~bootstrap/scss/bootstrap.scss"

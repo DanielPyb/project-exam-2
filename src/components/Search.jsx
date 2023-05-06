@@ -19,7 +19,8 @@ export function Search({ items }) {
   
     return (
       <>
-        <Form className="mb-4 sm={4}">
+      <div className="mb-5">
+        <Form className="sm={4} mt-5">
           <FormControl
             type="text"
             placeholder="Search"
@@ -36,6 +37,7 @@ export function Search({ items }) {
             ))}
           </ListGroup>
         )}
+        </div>
       </>
     );
   }

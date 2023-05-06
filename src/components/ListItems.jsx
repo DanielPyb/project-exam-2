@@ -1,5 +1,6 @@
 import React from 'react'
-import { Row, Card, Col } from 'react-bootstrap'
+import { Row, Card, Col } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 
 export default function ListItems({
@@ -10,6 +11,7 @@ export default function ListItems({
     price,
     location
 })  { return (
+
         <Card className="h-100" >
         <Card.Img
           variant="top"
@@ -30,5 +32,8 @@ export default function ListItems({
           </Col>  
           </Row>
         </Card.Body>
+        <Card.Footer>
+        <Link to={`${id}`}>Check out more</Link>
+        </Card.Footer>
       </Card>
 )}
