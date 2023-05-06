@@ -82,4 +82,26 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
     color: $white;
 }
 
+.burn-card-top{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.burn-card-top img{
+    width: 100%;
+}
+
+.burn-card-booking{
+    background-color: $black;
+    color: $white;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+.burn-cards-image{
+    height: 400px;
+    object-fit: cover;
+    padding: 20px 20px 0px 20px;
+}
+
 @import "~bootstrap/scss/bootstrap.scss"
