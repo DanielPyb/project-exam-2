@@ -1,7 +1,7 @@
 import {Row, Col, Button} from 'react-bootstrap';
 
-export default function ListingInfo(name, description, media, location, price) {
-  return (
+export default function SingelListing(name, description, media, location, price) {
+return (
     <>
     <div className='burn-card-top'>
     <img src={media[0]}></img>
