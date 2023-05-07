@@ -5,6 +5,7 @@ import ListingPage from './pages/Listing';
 import {Route, Routes} from "react-router-dom";
 import LoginRegister from './pages/LoginRegister';
 import Profile from './pages/Profile';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/listings/:id' element={<ListingPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
