@@ -9,7 +9,7 @@ export default function Profile() {
   return (
     <Container>
       <Avatar />
-      <Row s={1} lg={2}>
+      <Row s={1} lg={2} className="gx-4">
       <ForRentListings />
       <BiddedOnListings />
       </Row>
