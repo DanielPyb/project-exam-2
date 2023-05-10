@@ -1,11 +1,14 @@
-import {Row, Col, Button} from 'react-bootstrap';
+import {Row, Col, Button, Container} from 'react-bootstrap';
+import ImageCaroussel from './ImageCaroussel';
 
-export default function SingelListing(name, description, media, location, price) {
-return (
+export default function SingelListing({name, description, media, location, price}) {
+
+    return (
     <>
+    <Container>
     <div className='burn-card-top'>
-    <img src={media[0]}></img>
-    <div className='burn-card-title'>
+    <ImageCaroussel media={media}/>
+    <div className='burn-card-image'>
 <h2>{name}</h2>
 <p>{description}</p>
     </div>
@@ -34,6 +37,7 @@ return (
     </Col>
 </Row>
 </div>
+</Container>
 </>
   )
 }

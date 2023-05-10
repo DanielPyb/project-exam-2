@@ -4,7 +4,7 @@ import SingelListing from "../components/SingeListing";
 import { Row, Col, Button } from "react-bootstrap";
 
 export default function SingleListingPage() {
-  const [listing, setListing] = useState([]);
+  const [listing, setListing] = useState(undefined);
   const { id } = useParams();
   useEffect(() => {
     fetch("https://nf-api.onrender.com/api/v1/holidaze" + "/venues/" + id)
@@ -15,7 +15,7 @@ export default function SingleListingPage() {
   return (
     <>
     {listing ? ( <div>
-    <img src={listing.media[0]}></img>
+    <SingelListing {...listing} />
      </div>) : (
         <div>Loading</div>
      )}
