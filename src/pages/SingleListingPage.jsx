@@ -18,7 +18,6 @@ export default function SingleListingPage() {
         console.error(error);
       }
     }
-  
     fetchVenue();
   }, [id]);
   console.log(listing);

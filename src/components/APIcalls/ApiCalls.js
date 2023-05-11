@@ -68,9 +68,16 @@ export async function APIRegisterAccount(email, password, name, avatar, venueMan
 
 // Profile
 
-export async function APIGetProfiles(){
+export async function APIGetProfiles(accessToken){
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    };
     try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles");
+        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles", options);
         const data = await response.json();
         return data
     }
@@ -153,9 +160,16 @@ export async function APIGetProfiles(){
     */
 }
 
-export async function APIGetSingleProfile(name){
+export async function APIGetSingleProfile(name, accessToken){
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    };
     try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name );
+        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name, options );
         const data = await response.json();
         return data
     }

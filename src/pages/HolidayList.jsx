@@ -3,17 +3,25 @@ import ListItems from '../components/ListItems'
 import { baseURL } from '../utilities/BaseUrl';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Search } from '../components/Search';
+import { APIGetHolidazeVenues } from '../components/APIcalls/ApiCalls';
 
 
 
 export default function HolidayListPage() {
     const [items, setItems] = useState([]);
 
+    
     useEffect(() => {
-      fetch(baseURL + "/venues")
-        .then((res) => res.json())
-        .then((result) => setItems(result));
-    }, []);
+      async function fetchVenues() {
+        try{
+          const venues = await APIGetHolidazeVenues();
+          setItems(venues);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      fetchVenues();
+    },[]);
     return (
     <>
     <Container>
