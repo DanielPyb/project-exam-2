@@ -1,0 +1,4 @@
+Rerendering problemer: Carousselen som er satt opp console.logger hver eneste gang 
+carousel oppdaterers, enten av seg selv eller ved å la tiden gå ut, hvor kan 
+feilen ligge?
+
