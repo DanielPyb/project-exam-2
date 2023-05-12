@@ -346,6 +346,44 @@ export async function APIChangeAvatar(name, avatar, accessToken){
     */
 }
 
+export async function APIGetProfileVenues(name, accessToken){
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    };
+    try{
+        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/venues", options );
+        const data = await response.json();
+        return data
+    }
+    catch(error) {
+        console.error(error);
+        throw new Error("Failed to get list of venues: " + error.message);
+    } 
+}
+
+export async function APIGetProfileBookings(name, accessToken){
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`
+        }
+    };
+    try{
+        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/bookings", options );
+        const data = await response.json();
+        return data
+    }
+    catch(error) {
+        console.error(error);
+        throw new Error("Failed to get list of bookings: " + error.message);
+    } 
+}
+
 // Venues
 
 export async function APIGetHolidazeVenues(){
