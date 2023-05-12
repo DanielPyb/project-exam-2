@@ -135,4 +135,9 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
     width: 40%;
 }
 
+.full-view{
+    min-height: 100vh;
+}
+
+
 @import "~bootstrap/scss/bootstrap.scss"

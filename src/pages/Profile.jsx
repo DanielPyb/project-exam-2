@@ -57,9 +57,8 @@ export default function Profile() {
   return (
     <>
     {profile && venueListings && biddedListings ? (
-    <Container>
-    <h1>{profile.name}</h1>
-      <Avatar />
+    <Container className='full-view'>
+      <Avatar {...profile}/>
       <Row s={1} lg={2} className="gx-4">     
       {venueListings.length >= 1 ? (<ForRentListings />) : null}
       {biddedListings.length >= 1 ? (<BiddedOnListings />) : null}
