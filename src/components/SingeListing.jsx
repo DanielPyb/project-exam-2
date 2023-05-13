@@ -5,7 +5,7 @@ export default function SingelListing({name, description, media, location, price
 
     return (
     <>
-    <Container>
+    <Container >
     <div className='burn-card-top'>
     <ImageCaroussel media={media}/>
     <div className='burn-card-image'>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, FormControl, ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
   //filtered list based on the API list that will not require to make additional API calls
@@ -32,7 +33,7 @@ export function Search({ items }) {
           <ListGroup>
             {filteredList.map((item) => (
               <ListGroup.Item key={item.id}>
-              <p>{item.name}</p>
+              <Link to={`${item.id}`}><p>{item.name}</p></Link>
               </ListGroup.Item>
             ))}
           </ListGroup>

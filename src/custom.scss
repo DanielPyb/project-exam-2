@@ -137,7 +137,14 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
 
 .full-view{
     min-height: 100vh;
+    padding-top: 24px;
 }
 
+.line-clamp-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
 @import "~bootstrap/scss/bootstrap.scss"

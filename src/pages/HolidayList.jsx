@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ListItems from '../components/ListItems'
-import { baseURL } from '../utilities/BaseUrl';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Search } from '../components/Search';
 import { APIGetHolidazeVenues } from '../components/APIcalls/ApiCalls';
@@ -9,8 +8,13 @@ import { APIGetHolidazeVenues } from '../components/APIcalls/ApiCalls';
 
 export default function HolidayListPage() {
     const [items, setItems] = useState([]);
+    const listRef = useRef(null);
 
-    
+    useEffect(() => {
+      listRef.current.scrollIntoView({ behavior: "smooth" });
+    }, []);
+
+
     useEffect(() => {
       async function fetchVenues() {
         try{
@@ -24,6 +28,7 @@ export default function HolidayListPage() {
     },[]);
     return (
     <>
+    <div className='full-view' ref={listRef}>
     <Container>
     <Search items={items}/>
     <Row xs={1} md={2} lg={3} xl={4}>
@@ -34,6 +39,7 @@ export default function HolidayListPage() {
         ))}
     </Row>
     </Container>
+    </div>
     </>
   )
 }

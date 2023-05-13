@@ -22,9 +22,9 @@ export default function ListItems({
           <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
             <h2>{name}</h2>
           </Card.Title>
-          <p>{description}</p>
+          <p className='line-clamp-5'>{description}</p>
           <Row>
-        <Col>
+          <Col>
           <p>{price},- per night</p>
           </Col>
           <Col>

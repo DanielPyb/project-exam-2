@@ -26,12 +26,12 @@ export default function UpdateAvatarModal({name}) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Update Avatar
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>HoliDaze</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -41,7 +41,7 @@ export default function UpdateAvatarModal({name}) {
                 <Form.Control type="text" placeholder="A very cool logo" onChange={handleAvatarLinkChange}/>
               </Form.Group>
             </Row>
-            <Button variant="primary" onClick={updateAvatar} >
+            <Button type="submit" variant="primary" onClick={updateAvatar} >
               Update Avatar
             </Button>
           </Form>

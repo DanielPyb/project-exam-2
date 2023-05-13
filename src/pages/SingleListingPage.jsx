@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import SingelListing from "../components/SingeListing";
 import { Row, Col, Button } from "react-bootstrap";
@@ -7,6 +7,12 @@ import { APIGetSingleVenue } from "../components/APIcalls/ApiCalls";
 
 
 export default function SingleListingPage() {
+  const listingRef = useRef(null);
+
+  useEffect(() => {
+    listingRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   const [listing, setListing] = useState(undefined);
   const { id } = useParams();
   useEffect(() => {
@@ -22,13 +28,13 @@ export default function SingleListingPage() {
   }, [id]);
   console.log(listing);
   return (
-    <>
+    <div className="full-view" ref={listingRef}>
     {listing ? ( <div>
     <SingelListing {...listing} />
      </div>) : (
         <div>Loading</div>
      )}
-     </>
+     </div>
   );
   
 }
