@@ -2,3 +2,11 @@ Rerendering problemer: Carousselen som er satt opp console.logger hver eneste ga
 carousel oppdaterers, enten av seg selv eller ved å la tiden gå ut, hvor kan 
 feilen ligge?
 
+Problem i
+
+delete booking:
+listen rerendres ikke etter at du har bekreftet fjerning av ferien.
+
+update booking:
+er det mulig å sette inn datoen i datePickeren for å vise hva som tidligere
+var valgt?

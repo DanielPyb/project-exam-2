@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, FormGroup, Row } from 'react-bootstrap'
+import { APIDeleteBooking } from "../APIcalls/ApiCalls";
+import { accessToken } from "../APIcalls/accessToken";
 
-export default function DeleteBookingModal() {
-    const [show, setShow] = useState(false);
+export default function DeleteBookingModal({id}) {
+  const [confirmation, setConfirmation] = useState(false);
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  function handleSwitch(e){
+    setConfirmation(e.target.checked);
+  }
+
+  async function deleteBooking(){
+    if(confirmation){
+    APIDeleteBooking(id ,accessToken);
+    alert("your vacation is cancelled")
+    handleClose();
+  } else {
+    alert("If you really want to delete this, check yes")
+  }
+  }
   
     return (
     <>
     <Button variant="danger" onClick={handleShow}>
-      Update Booking
+      Delete Booking
     </Button>
 
     <Modal show={show} onHide={handleClose}>
@@ -28,10 +45,12 @@ export default function DeleteBookingModal() {
                 type="switch"
                 id="confirm-deletion"
                 label="Yes"
+                checked={confirmation}
+                onChange={handleSwitch}
         />
         </Form.Group>
         </Row>
-    <Button variant="danger" type="submit">Delete venue</Button> 
+    <Button variant="danger" onClick={deleteBooking}>Delete venue</Button> 
     </Form>
       </Modal.Body>
     </Modal>

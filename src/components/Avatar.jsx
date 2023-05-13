@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap';
-import tempPhoto from "../images/Rocket_in_Avengers_Endgame.jpeg"
 import UpdateAvatarModal from './ModalCalls/UpdateAvatarModal';
 
 

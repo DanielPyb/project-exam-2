@@ -525,7 +525,7 @@ export async function APIPutBooking(bookingDetails, id, accessToken){
         body: JSON.stringify(bookingDetails)
     };
     try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues/` + id, options);
+        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id, options);
         const data = await response.json();
         return data
     }
@@ -544,7 +544,7 @@ export async function APIDeleteBooking(id, accessToken){
         },
     }
     try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/booking/` + id, options);
+        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id, options);
         const data = await response.json();
         return data
     }

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap'
-import tempPhoto from "../images/Rocket_in_Avengers_Endgame.jpeg"
-import { Link, Route } from 'react-router-dom'
+import { Card, Col, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import UpdateBookingModal from './ModalCalls/UpdateBookingModal'
 import DeleteBookingModal from './ModalCalls/DeleteBookingModal'
 
@@ -26,10 +25,10 @@ export default function BiddedListingCard(venue) {
           </div>
           <Row>
           <Col>
-          <UpdateBookingModal />
+          <UpdateBookingModal {...venue}/>
           </Col>
           <Col>
-          <DeleteBookingModal />
+          <DeleteBookingModal id={venue.id}/>
           </Col>
           </Row>
           </Card.Body>
