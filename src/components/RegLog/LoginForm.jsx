@@ -38,6 +38,7 @@ export default function LoginForm({ toggleForm }) {
     console.log(loginObject);
     //Todo: link to profile page
     //Todo: make Api request
+    //Todo: put Access Token and Name into local storage for further use
   }
 
   return (
