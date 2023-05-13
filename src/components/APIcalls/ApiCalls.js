@@ -31,14 +31,7 @@ export async function APILogin(email, password) {
     */
 }
 
-export async function APIRegisterAccount(email, password, name, avatar, venueManager) {
-    const registerObject = {
-        email,
-        password,
-        name,
-        avatar,
-        venueManager
-    }
+export async function APIRegisterAccount(registerObject) {
     const options = {
         method: "POST",
         headers: {
