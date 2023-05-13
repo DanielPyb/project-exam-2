@@ -5,13 +5,13 @@ import LoginForm from './RegLog/LoginForm';
 
 
 export default function RegisterLoginForm() {
-    const [visibleForm, setVisibleForm] = useState(<RegisterForm />);
+    const [visibleForm, setVisibleForm] = useState(<RegisterForm toggleForm={visibleFormToggle}/>);
     
     function visibleFormToggle(){
         if (visibleForm.key == "login")
-        setVisibleForm(<RegisterForm key="register" />);
+        setVisibleForm(<RegisterForm key="register" toggleForm={visibleFormToggle}/>);
         else{
-            setVisibleForm(<LoginForm key="login" />);
+            setVisibleForm(<LoginForm key="login" toggleForm={visibleFormToggle} />);
         }
     }
 

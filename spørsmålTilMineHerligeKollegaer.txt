@@ -10,3 +10,8 @@ listen rerendres ikke etter at du har bekreftet fjerning av ferien.
 update booking:
 er det mulig å sette inn datoen i datePickeren for å vise hva som tidligere
 var valgt?
+
+toggleForm
+
+can trykkes en gang så slutter det å fungere
+hva kan dette komme av?
