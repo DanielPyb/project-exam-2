@@ -133,7 +133,8 @@ input[type=text], input[type=number], input[type=password], input[type=email] {
 }
 
 .avatar{
-    width: 40%;
+    min-width: 300px;
+    max-width: 450px;
 }
 
 .full-view{

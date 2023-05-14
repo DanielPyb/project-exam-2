@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Avatar from "../components/Avatar";
 import ForRentListings from "../components/ForRentListings";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import BiddedOnListings from "../components/BiddedOnListings";
 import {
   APIGetProfileBookings,
@@ -10,20 +10,22 @@ import {
 } from "../components/APIcalls/ApiCalls";
 import { useParams } from "react-router-dom";
 import { accessToken } from "../components/APIcalls/accessToken";
+import NewVenue from "../components/ModalCalls/NewVenue";
 
 export default function Profile() {
   const profileRef = useRef(null);
-
   useEffect(() => {
     profileRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
+
+  const tempProfileName = "danielPybus"
 
   const [profile, setProfile] = useState(undefined);
   useEffect(() => {
     async function fetchProfile() {
       try {
         const fetchedProfile = await APIGetSingleProfile(
-          "danielPyb",
+          tempProfileName,
           accessToken
         );
         setProfile(fetchedProfile);
@@ -40,7 +42,7 @@ export default function Profile() {
     async function fetchBiddedListings() {
       try {
         const fetchedBiddedListings = await APIGetProfileBookings(
-          "danielPyb",
+          tempProfileName,
           accessToken
         );
         setBiddedListings(fetchedBiddedListings);
@@ -56,7 +58,7 @@ export default function Profile() {
     async function fetchBiddedListings() {
       try {
         const fetchedVenueListings = await APIGetProfileVenues(
-          "danielPyb",
+          tempProfileName,
           accessToken
         );
         setVenueListings(fetchedVenueListings);
@@ -73,9 +75,14 @@ export default function Profile() {
     <div className="full-view" ref={profileRef}>
       {profile && venueListings && biddedListings ? (
         <Container>
+        <Row>
+        <Col>
           <Avatar {...profile} />
+          </Col>
+          {profile.venueManager && <Col><NewVenue /></Col>}
+          </Row>
           <Row s={1} lg={2} className="gx-4">
-            {venueListings.length >= 1 ? <ForRentListings /> : null}
+            {venueListings.length >= 1 ? <ForRentListings list={venueListings}/> : null}
             {biddedListings.length >= 1 ? <BiddedOnListings list={biddedListings} /> : null}
           </Row>
         </Container>
