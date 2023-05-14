@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import tempPhoto from "../images/Rocket_in_Avengers_Endgame.jpeg"
 import DeleteVenueModal from './ModalCalls/DeleteVenueModal'
+import UpdateVenueModal from './ModalCalls/UpdateVenueModal'
 
 
 export default function RentedListingsCard(venue) {
@@ -24,7 +25,7 @@ export default function RentedListingsCard(venue) {
           </div>
           <Row>
           <Col>
-          <Button>Update Listing</Button>
+          <UpdateVenueModal venueDetails={venue} />
           </Col>
           <Col>
           <DeleteVenueModal id={venue.id} />
