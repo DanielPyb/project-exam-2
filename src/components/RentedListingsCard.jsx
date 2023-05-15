@@ -3,10 +3,10 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import tempPhoto from "../images/Rocket_in_Avengers_Endgame.jpeg"
 import DeleteVenueModal from './ModalCalls/DeleteVenueModal'
 import UpdateVenueModal from './ModalCalls/UpdateVenueModal'
+import ViewVenueBookings from './ModalCalls/ViewVenueBookings'
 
 
 export default function RentedListingsCard(venue) {
-  console.log(venue)
   return (
     <Col className='gy-2'>
     <Card className="h-100" >
@@ -32,6 +32,9 @@ export default function RentedListingsCard(venue) {
           </Col>
           </Row>
           </Card.Body>
+          <Card.Title>
+            <ViewVenueBookings bookedVenueList={venue}/>
+          </Card.Title>
     </Card>
     </Col>
   )

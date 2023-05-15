@@ -348,7 +348,7 @@ export async function APIGetProfileVenues(name, accessToken){
         }
     };
     try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/venues", options );
+        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/venues?_bookings=true", options );
         const data = await response.json();
         return data
     }
