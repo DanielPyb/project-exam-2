@@ -22,3 +22,5 @@ kanskje det er bedre å endre p dette
 viewVenueBookings, 
 denne koden er ganske repeterende se om det er mulig
 å finskrive den litt. 
+
+split teksten i singellisting til å væære to kolonner
