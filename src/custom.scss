@@ -1,157 +1,170 @@
-$black: #1A0F0C;
-$primary: #B05190;
-$secondary: #DE66B6;
-$gray-200: #DBD4D4;
-$gray-500: #9A9190;
-$gray-800: #392E2C;
+$black: #1a0f0c;
+$primary: #b05190;
+$secondary: #de66b6;
+$gray-200: #dbd4d4;
+$gray-500: #9a9190;
+$gray-800: #392e2c;
 $grid-gutter-width: 32px;
-$red: #FC4444;
-$green: #00C9A5;
+$red: #fc4444;
+$green: #00c9a5;
 $modal-backdrop-bg: $primary;
 $white: rgb(255, 253, 253);
 
-
-.burn-form{
-    max-width: 500px;
-    background: rgba(255, 253, 253, 0.95);
-    margin: 5px;
-    padding: 20px;
-    margin-top: 40px;
-    border: 1px solid rgba(176, 81, 144, 0.4);
-    box-shadow: 4px 4px 4px rgba(176, 81, 144, 0.25);
-    border-radius: 10px;
+.burn-form {
+  max-width: 500px;
+  background: rgba(255, 253, 253, 0.95);
+  margin: 5px;
+  padding: 20px;
+  margin-top: 40px;
+  border: 1px solid rgba(176, 81, 144, 0.4);
+  box-shadow: 4px 4px 4px rgba(176, 81, 144, 0.25);
+  border-radius: 10px;
 }
 
-input[type=text], input[type=number], input[type=password], input[type=email] {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid $black;
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $black;
 }
 
-.form-control:focus{
-    box-shadow: 0 0 0 .25rem rgba(176, 81, 144,.25);
-    border: none;
-    border-bottom: 1px solid $primary;
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(176, 81, 144, 0.25);
+  border: none;
+  border-bottom: 1px solid $primary;
 }
 
 // landing page //
 
 .landing-page {
-    height: 100vh;
-    background: url(images/landing_page.png);
-    background-position: 0px -600px;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100vh;
+  background: url(images/landing_page.png);
+  background-position: 0px -600px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.hero{
-    min-width: 226px;
-    max-width: 678px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 40px;
+.hero {
+  min-width: 226px;
+  max-width: 678px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px;
 }
 
-.hero button{
-    width: 100%;
-    font-size: 3rem;
+.hero button {
+  width: 100%;
+  font-size: 3rem;
 }
 
 .hero-title {
-    font-size: 120px;
-    color: $white;
-    font-weight: 900;
-    text-shadow: 1px 1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary, -1px -1px 0 $primary, 1px 0px 0 $primary, 0px 1px 0 $primary, -1px 0px 0 , 0px -1px 0 $primary;
-    padding: 0;
-    margin-bottom: 32px;
+  font-size: 120px;
+  color: $white;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary,
+    -1px -1px 0 $primary, 1px 0px 0 $primary, 0px 1px 0 $primary, -1px 0px 0,
+    0px -1px 0 $primary;
+  padding: 0;
+  margin-bottom: 32px;
 }
 
 .hero-text {
-    font-size: 48px;
-    font-weight: 300;
-    line-height: 56px;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 32px;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 56px;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 32px;
 }
 
-.hero-link a{
-    font-size: 48px;
-    color: $white;
+.hero-link a {
+  font-size: 48px;
+  color: $white;
 }
 
-.hero-link a:visited, .hero-link {
-    color: $white;
+.hero-link a:visited,
+.hero-link {
+  color: $white;
 }
 
-.burn-card-top{
-    width: 100%;
-    margin: 0 auto;
+.burn-card-top {
+  width: 100%;
+  margin: 0 auto;
 }
 
-.burn-card-top img{
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+.burn-card-top img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
 }
 
-.burn-card-booking{
-    background-color: $black;
-    color: $white;
-    padding: 20px;
-    margin-bottom: 0;
+.burn-card-booking {
+  background-color: $black;
+  color: $white;
+  padding: 20px;
+  margin-bottom: 0;
 }
 
-.burn-cards-image{
-    height: 400px;
-    object-fit: cover;
-    padding: 20px 20px 0px 20px;
+.burn-cards-image {
+  height: 400px;
+  object-fit: cover;
+  padding: 20px 20px 0px 20px;
 }
 
-#logreg-form{
-    max-width: 500px;
-    margin: auto;
-    height: 100vh;
+#logreg-form {
+  max-width: 500px;
+  margin: auto;
+  height: 100vh;
 }
 
-
-.footer-container{
-    background-color: $black;
-    color: $white;
-    text-align: center;
+.footer-container {
+  background-color: $black;
+  color: $white;
+  text-align: center;
 }
 
-.footer-content{
-    padding-top: 20px;
-    max-width: 500px;
-    min-width: 250px;
-    margin: 0 auto;
+.footer-content {
+  padding-top: 20px;
+  max-width: 500px;
+  min-width: 250px;
+  margin: 0 auto;
 }
 
-.footer-title{
-    font-size: 2.5rem;
+.footer-title {
+  font-size: 2.5rem;
 }
 
-.avatar{
-    min-width: 300px;
-    max-width: 450px;
+.avatar {
+  min-width: 300px;
+  max-width: 450px;
 }
 
-.full-view{
-    min-height: 100vh;
-    padding-top: 24px;
+.full-view {
+  min-height: 100vh;
+  padding-top: 24px;
 }
 
 .line-clamp-5 {
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
-  .border-bot{
-    border-bottom: 2px solid $primary;
-    padding-top: 10px;
-    margin: 1rem;
-  }
-@import "~bootstrap/scss/bootstrap.scss"
+.border-bot {
+  border-bottom: 2px solid $primary;
+  padding-top: 10px;
+  margin: 1rem;
+}
+
+.react-datepicker__header {
+  color: $white;
+  border-bottom: none;
+}
+
+.mute {
+  background-color: #fc4444;
+}
+@import "~bootstrap/scss/bootstrap.scss";

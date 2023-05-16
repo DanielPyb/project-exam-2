@@ -1,6 +1,7 @@
 import { Row, Col, Button, Container } from "react-bootstrap";
 import ImageCaroussel from "./ImageCaroussel";
 import CreateBookingModal from "./ModalCalls/CreateBookingModal";
+import PickedDates from "./PickedDates";
 
 export default function SingelListing({
   name,
@@ -9,6 +10,8 @@ export default function SingelListing({
   location,
   price,
   id,
+  meta,
+  bookings,
 }) {
   return (
     <>
@@ -21,11 +24,22 @@ export default function SingelListing({
           </div>
           <div className="burn-card-title">
             <h2>Includes</h2>
-            <ul></ul>
+            <ul>
+              {Object.keys(meta).map((key) => {
+                if (meta[key]) {
+                  if (key == "pets") {
+                    return <li key={key}>pet friendly</li>;
+                  }
+                  return <li key={key}>{key}</li>;
+                }
+                return null;
+              })}
+              Date range for one datepicker with disabled dates highlighted
+            </ul>
           </div>
           <div className="burn-card-title">
             <h2>Availability</h2>
-            <p>DATE RANGE INSERT</p>
+            <PickedDates bookings={bookings} />
           </div>
           <div className="burn-card-title">
             <h2>Location</h2>
