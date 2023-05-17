@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { APILogin } from "../APIcalls/ApiCalls.js";
 
 export default function LoginForm({ toggleForm }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+  const [profileName, setProfileName] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+
+  function localStorageSetter() {
+    localStorage.setItem("profileName", profileName);
+    localStorage.setItem("accessToken", accessToken);
+  }
 
   function emailHandler(e) {
     setEmail(e.target.value);
@@ -24,7 +32,7 @@ export default function LoginForm({ toggleForm }) {
     }
   }
 
-  function TESTING(e) {
+  async function logIn(e) {
     if (!email) {
       setEmailError("Please provide valid email");
       return;
@@ -35,10 +43,10 @@ export default function LoginForm({ toggleForm }) {
     }
     const loginObject = { email, password };
     e.preventDefault();
-    console.log(loginObject);
-    //Todo: link to profile page
-    //Todo: make Api request
-    //Todo: put Access Token and Name into local storage for further use
+    const loginDetails = await APILogin(loginObject);
+    console.log(loginDetails);
+    localStorage.setItem("profileName", loginDetails.name);
+    localStorage.setItem("accessToken", loginDetails.accessToken);
   }
 
   return (
@@ -80,7 +88,7 @@ export default function LoginForm({ toggleForm }) {
             )}
           </Form.Group>
         </Row>
-        <Button onClick={TESTING}>LOGIN</Button>
+        <Button onClick={logIn}>LOGIN</Button>
       </Form>
     </div>
   );

@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import SingelListing from "../components/SingeListing";
-import { Row, Col, Button } from "react-bootstrap";
 import { APIGetSingleVenue } from "../components/APIcalls/ApiCalls";
-
-
 
 export default function SingleListingPage() {
   const listingRef = useRef(null);
@@ -29,12 +26,13 @@ export default function SingleListingPage() {
   console.log(listing);
   return (
     <div className="full-view" ref={listingRef}>
-    {listing ? ( <div>
-    <SingelListing {...listing} />
-     </div>) : (
+      {listing ? (
+        <div>
+          <SingelListing {...listing} />
+        </div>
+      ) : (
         <div>Loading</div>
-     )}
-     </div>
+      )}
+    </div>
   );
-  
 }

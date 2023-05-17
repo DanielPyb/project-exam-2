@@ -1,10 +1,6 @@
 // Auth
 
-export async function APILogin(email, password) {
-  const loginObject = {
-    email,
-    password,
-  };
+export async function APILogin(loginObject) {
   const options = {
     method: "POST",
     headers: {

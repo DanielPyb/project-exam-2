@@ -18,9 +18,8 @@ export default function ViewVenueBookings({ bookedVenueList }) {
       vacationEnd.getTime() - vacationStart.getTime()
     );
     const numberOfNights = Math.ceil(vacationDuration / (1000 * 3600 * 24));
-    return (booking.guests * bookedVenueList.price * numberOfNights);
-    
-}
+    return booking.guests * bookedVenueList.price * numberOfNights;
+  }
 
   function calculateTotalValue() {
     let total = 0;
@@ -38,9 +37,11 @@ export default function ViewVenueBookings({ bookedVenueList }) {
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
-        View planned vacations
-      </Button>
+      <div className="d-grid gap-0">
+        <Button variant="secondary" onClick={handleShow}>
+          View planned vacations
+        </Button>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>HoliDaze</Modal.Title>
@@ -56,8 +57,7 @@ export default function ViewVenueBookings({ bookedVenueList }) {
             <Col key={booking.id} className="border-bot">
               <p>
                 {startDate} to {endDate} ... {booking.guests} guest(s) for a
-                total of{" "}
-                <strong>{individualPrice(booking)},-</strong>
+                total of <strong>{individualPrice(booking)},-</strong>
               </p>
             </Col>
           );
