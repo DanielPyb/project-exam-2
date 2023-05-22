@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Modal, ModalFooter, Row } from "react-bootstrap";
+import { Button, Col, Modal, ModalFooter } from "react-bootstrap";
 
 export default function ViewVenueBookings({ bookedVenueList }) {
   const [show, setShow] = useState(false);

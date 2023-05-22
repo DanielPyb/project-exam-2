@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import SingelListing from "../components/SingeListing";
+import SingelListing from "../components/List/SingeListing";
 import { APIGetSingleVenue } from "../components/APIcalls/ApiCalls";
 
 export default function SingleListingPage() {
@@ -23,7 +23,6 @@ export default function SingleListingPage() {
     }
     fetchVenue();
   }, [id]);
-  console.log(listing);
   return (
     <div className="full-view" ref={listingRef}>
       {listing ? (

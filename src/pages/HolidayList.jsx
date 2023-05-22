@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import ListItems from "../components/ListItems";
+import ListItems from "../components/List/ListItems";
 import { Col, Container, Row } from "react-bootstrap";
-import { Search } from "../components/Search";
+import { Search } from "../components/List/Search";
 import { APIGetHolidazeVenues } from "../components/APIcalls/ApiCalls";
 
 export default function HolidayListPage() {

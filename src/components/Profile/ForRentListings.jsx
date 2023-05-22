@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import RentedListingsCard from "./RentedListingsCard";
 
 export default function ForRentListings({ list }) {

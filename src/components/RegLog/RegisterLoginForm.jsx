@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import RegisterForm from "./RegLog/RegisterForm";
-import LoginForm from "./RegLog/LoginForm";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
 export default function RegisterLoginForm() {
   const [showLogin, setShowLogin] = useState(false);

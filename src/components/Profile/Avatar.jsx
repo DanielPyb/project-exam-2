@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button, Card } from 'react-bootstrap';
-import UpdateAvatarModal from './ModalCalls/UpdateAvatarModal';
+import { Card } from 'react-bootstrap';
+import UpdateAvatarModal from '../ModalCalls/UpdateAvatarModal';
 
 
 export default function Avatar({name, avatar}) {

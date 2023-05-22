@@ -17,7 +17,7 @@ export default function LandingSite() {
         <h1 className='hero-title'>HoliDaze</h1>
         <h4 className='hero-text'>Experience vacations how they were meant to be!</h4>
         <Link to={"/login"}><Button>sign up</Button></Link>
-        <Link to={"/listings"}><p className='hero-link'><a href="">tour site</a></p></Link>
+        <Link to={"/listings"}><p className='hero-link'>tour site</p></Link>
       </div>
     </div>
     </>

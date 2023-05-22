@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { APILogin } from "../APIcalls/ApiCalls.js";
 
 export default function LoginForm({ toggleForm }) {
@@ -7,13 +7,6 @@ export default function LoginForm({ toggleForm }) {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
-  const [profileName, setProfileName] = useState("");
-  const [accessToken, setAccessToken] = useState("");
-
-  function localStorageSetter() {
-    localStorage.setItem("profileName", profileName);
-    localStorage.setItem("accessToken", accessToken);
-  }
 
   function emailHandler(e) {
     setEmail(e.target.value);

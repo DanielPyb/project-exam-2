@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
-import NewVenueForm from '../NewVenueForm';
+import { Button, Modal } from 'react-bootstrap';
+import NewVenueForm from "../Profile/NewVenueForm";
 
 
 export default function NewVenue() {

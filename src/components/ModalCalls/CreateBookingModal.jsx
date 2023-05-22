@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
-import { APIBookingPost, APIPutBooking } from "../APIcalls/ApiCalls";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { APIBookingPost  } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 import logo from "../../images/logo.svg";
 
@@ -22,7 +22,6 @@ export default function CreateBookingModal({ venueId }) {
       guests: Number(guests),
       venueId,
     };
-    console.log(bookingObject);
     APIBookingPost(bookingObject, accessToken);
   }
 

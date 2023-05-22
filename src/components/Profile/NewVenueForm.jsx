@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
-import { APIPostVenue } from "./APIcalls/ApiCalls";
-import { accessToken } from "./APIcalls/accessToken";
+import { APIPostVenue } from "../APIcalls/ApiCalls";
+import { accessToken } from "../APIcalls/accessToken";
 
 export default function NewVenueForm() {
   const [name, setName] = useState("");

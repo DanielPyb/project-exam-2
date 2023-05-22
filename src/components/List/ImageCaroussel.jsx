@@ -4,7 +4,6 @@ import { Carousel } from 'react-bootstrap';
 
 export default function ImageCaroussel({media}) {
   const [idx, setIdx] = useState(0);
-console.log(media)
   const handleSelect = (selectIndex, e) => {
     setIdx(selectIndex);
   }
@@ -15,6 +14,7 @@ console.log(media)
             <Carousel.Item>
         <img className='burn-card-image' 
             src={image}
+            alt="describing the place you can visit"
         />
       </Carousel.Item>
         ))}

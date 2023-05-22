@@ -108,6 +108,9 @@ export default function UpdateVenueModal({ venueDetails }) {
         break;
       case "location_country":
         setLocation_country(e.target.value);
+        break;
+      default:
+        break;
     }
   }
 

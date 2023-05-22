@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import UpdateBookingModal from './ModalCalls/UpdateBookingModal'
-import DeleteBookingModal from './ModalCalls/DeleteBookingModal'
+import UpdateBookingModal from '../ModalCalls/UpdateBookingModal'
+import DeleteBookingModal from '../ModalCalls/DeleteBookingModal'
 
 export default function BiddedListingCard(venue) {
   const startDate = new Date(venue.dateFrom).toLocaleString().split(',')[0]

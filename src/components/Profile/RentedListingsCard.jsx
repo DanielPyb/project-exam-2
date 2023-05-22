@@ -1,9 +1,8 @@
 import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
-import tempPhoto from "../images/Rocket_in_Avengers_Endgame.jpeg";
-import DeleteVenueModal from "./ModalCalls/DeleteVenueModal";
-import UpdateVenueModal from "./ModalCalls/UpdateVenueModal";
-import ViewVenueBookings from "./ModalCalls/ViewVenueBookings";
+import { Card, Col, Row } from "react-bootstrap";
+import DeleteVenueModal from "../ModalCalls/DeleteVenueModal";
+import UpdateVenueModal from "../ModalCalls/UpdateVenueModal";
+import ViewVenueBookings from "../ModalCalls/ViewVenueBookings";
 import { Link } from "react-router-dom";
 
 export default function RentedListingsCard(venue) {

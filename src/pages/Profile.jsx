@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import Avatar from "../components/Avatar";
-import ForRentListings from "../components/ForRentListings";
+import Avatar from "../components/Profile/Avatar";
+import ForRentListings from "../components/Profile/ForRentListings";
 import { Col, Container, Row } from "react-bootstrap";
-import BiddedOnListings from "../components/BiddedOnListings";
+import BiddedOnListings from "../components/Profile/BiddedOnListings";
 import {
   APIGetProfileBookings,
   APIGetProfileVenues,
@@ -26,7 +26,6 @@ export default function Profile() {
           accessToken
         );
         setProfile(fetchedProfile);
-        console.log(profile);
       } catch (error) {
         console.error(error);
       }
@@ -59,7 +58,6 @@ export default function Profile() {
           accessToken
         );
         setVenueListings(fetchedVenueListings);
-        console.log(venueListings);
       } catch (error) {
         console.error(error);
       }

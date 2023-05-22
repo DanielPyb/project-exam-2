@@ -1,7 +1,7 @@
-import { Row, Col, Button, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import ImageCaroussel from "./ImageCaroussel";
-import CreateBookingModal from "./ModalCalls/CreateBookingModal";
-import PickedDates from "./PickedDates";
+import CreateBookingModal from "../ModalCalls/CreateBookingModal";
+import PickedDates from "../APIcalls/PickedDates";
 
 export default function SingelListing({
   name,
@@ -27,7 +27,7 @@ export default function SingelListing({
             <ul>
               {Object.keys(meta).map((key) => {
                 if (meta[key]) {
-                  if (key == "pets") {
+                  if (key === "pets") {
                     return <li key={key}>pet friendly</li>;
                   }
                   return <li key={key}>{key}</li>;

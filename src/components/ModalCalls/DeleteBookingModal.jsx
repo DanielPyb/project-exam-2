@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Button, Col, Form, FormGroup, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import { APIDeleteBooking } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 

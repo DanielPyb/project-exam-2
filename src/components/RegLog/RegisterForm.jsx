@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { APIRegisterAccount } from "../APIcalls/ApiCalls";
 
 export default function RegisterForm({ toggleForm }) {
