@@ -19,7 +19,7 @@ export default function PickedDates({ bookings }) {
 
   return (
     <div>
-      <ReactDatePicker inline monthsShown={2} excludeDates={mutedDates} />
+      <ReactDatePicker inline monthsShown={1} excludeDates={mutedDates} />
     </div>
   );
 }

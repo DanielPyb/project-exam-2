@@ -17,7 +17,8 @@ export default function ViewVenueBookings({ bookedVenueList }) {
     const vacationDuration = Math.abs(
       vacationEnd.getTime() - vacationStart.getTime()
     );
-    const numberOfNights = Math.ceil(vacationDuration / (1000 * 3600 * 24));
+    let numberOfNights = Math.ceil(vacationDuration / (1000 * 3600 * 24));
+    if (numberOfNights === 0) numberOfNights = 1;
     return booking.guests * bookedVenueList.price * numberOfNights;
   }
 
@@ -29,11 +30,18 @@ export default function ViewVenueBookings({ bookedVenueList }) {
       const vacationDuration = Math.abs(
         vacationEnd.getTime() - vacationStart.getTime()
       );
-      const numberOfNights = Math.ceil(vacationDuration / (1000 * 3600 * 24));
+      let numberOfNights = Math.ceil(vacationDuration / (1000 * 3600 * 24));
+      if (numberOfNights === 0) numberOfNights = 1;
       total += booking.guests * bookedVenueList.price * numberOfNights;
     });
     setTotalValue(total);
   }
+
+  const sortedList = [...bookedVenueList.bookings].sort((a, b) => {
+    const dateA = new Date(a.dateFrom);
+    const dateB = new Date(b.dateFrom);
+    return dateA - dateB;
+  });
 
   return (
     <>
@@ -46,7 +54,7 @@ export default function ViewVenueBookings({ bookedVenueList }) {
         <Modal.Header closeButton>
           <Modal.Title>HoliDaze</Modal.Title>
         </Modal.Header>
-        {bookedVenueList.bookings.map((booking) => {
+        {sortedList.map((booking) => {
           const startDate = new Date(booking.dateFrom)
             .toLocaleString()
             .split(",")[0];

@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { APIBookingPost, APIPutBooking } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
+import logo from "../../images/logo.svg";
 
 export default function CreateBookingModal({ venueId }) {
   const [show, setShow] = useState(false);
@@ -30,11 +31,19 @@ export default function CreateBookingModal({ venueId }) {
       <Button onClick={handleShow}>Book!</Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header>HoliDaze</Modal.Header>
+        <Modal.Header>
+          <img
+            src={logo}
+            width={30}
+            className="d-inline-block align-top"
+            alt="holidaze logo"
+          />
+          HoliDaze
+        </Modal.Header>
         <Modal.Body>
           <Form>
             <h2>Create Booking</h2>
-            <Row className="mb-3">
+            <Row className="mb-3" xs={1} lg={3}>
               <Form.Group as={Col}>
                 <Form.Label>From</Form.Label>
                 <Form.Control

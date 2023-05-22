@@ -28,7 +28,7 @@ export default function HolidayListPage() {
       <div className="full-view" ref={listRef}>
         <Container>
           <Search items={items} />
-          <Row xs={1} md={2} lg={3} xl={4} className="mt-2 d-grid gap-4">
+          <Row xs={1} md={2} lg={3} xl={4} className="g-4">
             {items.map((item) => (
               <Col key={item.key}>
                 <ListItems {...item} />

@@ -34,7 +34,6 @@ export default function SingelListing({
                 }
                 return null;
               })}
-              Date range for one datepicker with disabled dates highlighted
             </ul>
           </div>
           <div className="burn-card-title">

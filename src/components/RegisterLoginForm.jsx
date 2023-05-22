@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
-import {Button, Col, Form, FormGroup, Row } from 'react-bootstrap'
-import RegisterForm from './RegLog/RegisterForm'
-import LoginForm from './RegLog/LoginForm';
-
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import RegisterForm from "./RegLog/RegisterForm";
+import LoginForm from "./RegLog/LoginForm";
 
 export default function RegisterLoginForm() {
-    const [visibleForm, setVisibleForm] = useState(<RegisterForm toggleForm={visibleFormToggle}/>);
-    
-    function visibleFormToggle(){
-        if (visibleForm.key == "login")
-        setVisibleForm(<RegisterForm key="register" toggleForm={visibleFormToggle}/>);
-        else{
-            setVisibleForm(<LoginForm key="login" toggleForm={visibleFormToggle} />);
-        }
-    }
+  const [showLogin, setShowLogin] = useState(false);
 
-    return(
-        <>
-        {visibleForm}
-        <Button variant='outline-primary' onClick={visibleFormToggle}>Change Form</Button>
-        </>
-    )
+  function visibleFormToggle() {
+    console.log(showLogin);
+    setShowLogin(!showLogin);
+  }
+
+  return (
+    <>
+      {showLogin ? (
+        <LoginForm key="login" toggleForm={visibleFormToggle} />
+      ) : (
+        <RegisterForm key="register" toggleForm={visibleFormToggle} />
+      )}
+      <Button variant="outline-primary" onClick={visibleFormToggle}>
+        Change Form
+      </Button>
+    </>
+  );
 }
