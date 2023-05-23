@@ -3,7 +3,7 @@ import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { APIPostVenue } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 
-export default function NewVenueForm() {
+export default function NewVenueForm({ onUpdateVenue }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
@@ -34,7 +34,8 @@ export default function NewVenueForm() {
   const [facilities_wifiError, setFacilities_wifiError] = useState(null);
   const [facilities_parkingError, setFacilities_parkingError] = useState(null);
   const [facilities_petError, setFacilities_petError] = useState(null);
-  const [facilities_breakfastError, setFacilities_breakfastError] = useState(null);
+  const [facilities_breakfastError, setFacilities_breakfastError] =
+    useState(null);
   //location states
   const [location_continentError, setLocation_continentError] = useState(null);
   const [location_addressError, setLocation_addressError] = useState(null);
@@ -43,77 +44,81 @@ export default function NewVenueForm() {
   const [location_countryError, setLocation_countryError] = useState(null);
 
   //Handler
- function changeHandler(key, e) {
-    switch (key){
-        case "name":
-            setName(e.target.value);
-            break;
-        case "description":
-            setDescription(e.target.value);
-            break;
-        case "media":
-            setMedia(e.target.value.split(","));
-            break;
-        case "price":
-            setPrice(e.target.value);
-            break;
-        case "guests":
-            setGuests(e.target.value);
-            break;
-        case "wifi":
-            setFacilities_wifi(e.target.checked)
-            break;
-        case "breakfast":
-            setFacilities_breakfast(e.target.checked)
-            break;
-        case "pet":
-            setFacilities_pet(e.target.checked)
-            break;
-        case "parking":
-            setFacilities_parking(e.target.checked)
-            break;
-        case "location_continent":
-            setLocation_continent(e.target.value);
-            break;
-        case "location_address":
-            setLocation_address(e.target.value);
-            break;
-        case "location_city":
-            setLocation_city(e.target.value);
-            break;
-        case "location_zip":
-            setLocation_zip(e.target.value);
-            break;
-        case "location_country":
-            setLocation_country(e.target.value);
+  function changeHandler(key, e) {
+    switch (key) {
+      case "name":
+        setName(e.target.value);
+        break;
+      case "description":
+        setDescription(e.target.value);
+        break;
+      case "media":
+        setMedia(e.target.value.split(","));
+        break;
+      case "price":
+        setPrice(e.target.value);
+        break;
+      case "guests":
+        setGuests(e.target.value);
+        break;
+      case "wifi":
+        setFacilities_wifi(e.target.checked);
+        break;
+      case "breakfast":
+        setFacilities_breakfast(e.target.checked);
+        break;
+      case "pet":
+        setFacilities_pet(e.target.checked);
+        break;
+      case "parking":
+        setFacilities_parking(e.target.checked);
+        break;
+      case "location_continent":
+        setLocation_continent(e.target.value);
+        break;
+      case "location_address":
+        setLocation_address(e.target.value);
+        break;
+      case "location_city":
+        setLocation_city(e.target.value);
+        break;
+      case "location_zip":
+        setLocation_zip(e.target.value);
+        break;
+      case "location_country":
+        setLocation_country(e.target.value);
+        break;
+      default:
+        break;
     }
- }
+  }
 
- async function createVenueListing(e){
+  async function createVenueListing(e) {
     e.preventDefault();
     const venueObject = {
-        name,
-        description,
-        media,
-        "price": Number(price),
-        "maxGuests": Number(guests),
-        "meta": {
-            "wifi": facilities_wifi,
-            "parking": facilities_parking,
-            "breakfast": facilities_breakfast,
-            "pets": facilities_pet
-        },
-        "location": {
-            "address": location_address,
-            "city": location_city,
-            "zip": location_zip,
-            "country": location_country,
-            "continent": location_continent
-        }
-    }
-    APIPostVenue(venueObject, accessToken);
-    console.log(venueObject)
- }
+      name,
+      description,
+      media,
+      price: Number(price),
+      maxGuests: Number(guests),
+      meta: {
+        wifi: facilities_wifi,
+        parking: facilities_parking,
+        breakfast: facilities_breakfast,
+        pets: facilities_pet,
+      },
+      location: {
+        address: location_address,
+        city: location_city,
+        zip: location_zip,
+        country: location_country,
+        continent: location_continent,
+      },
+    };
+    await APIPostVenue(venueObject, accessToken);
+    onUpdateVenue();
+    console.log(venueObject);
+  }
 
   return (
     <div className="burn-form">
@@ -122,13 +127,21 @@ export default function NewVenueForm() {
         <Row className="mb-3">
           <Form.Group>
             <Form.Label>Name of venue</Form.Label>
-            <Form.Control type="text" placeholder="Lovely boat" onChange={(e) => changeHandler("name", e)}/>
+            <Form.Control
+              type="text"
+              placeholder="Lovely boat"
+              onChange={(e) => changeHandler("name", e)}
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
           <Form.Group>
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} onChange={(e) => changeHandler("description", e)}/>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              onChange={(e) => changeHandler("description", e)}
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
@@ -144,14 +157,18 @@ export default function NewVenueForm() {
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Price per night (kr)</Form.Label>
-            <Form.Control type="number" placeholder="200" 
-                onChange={(e) => changeHandler("price", e)}
+            <Form.Control
+              type="number"
+              placeholder="200"
+              onChange={(e) => changeHandler("price", e)}
             />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Max guests</Form.Label>
-            <Form.Control type="number" placeholder="2" 
-                onChange={(e) => changeHandler("guests", e)}
+            <Form.Control
+              type="number"
+              placeholder="2"
+              onChange={(e) => changeHandler("guests", e)}
             />
           </Form.Group>
         </Row>
@@ -196,38 +213,52 @@ export default function NewVenueForm() {
         <Row className="mb-3">
           <Form.Group>
             <Form.Label>Continent</Form.Label>
-            <Form.Control type="text" placeholder="Europe" onChange={(e) => changeHandler("location_continent", e)}/>
+            <Form.Control
+              type="text"
+              placeholder="Europe"
+              onChange={(e) => changeHandler("location_continent", e)}
+            />
           </Form.Group>
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Address</Form.Label>
-            <Form.Control type="text" placeholder="Mølleparken 4" 
-                onChange={(e) => changeHandler("location_address", e)}
+            <Form.Control
+              type="text"
+              placeholder="Mølleparken 4"
+              onChange={(e) => changeHandler("location_address", e)}
             />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>City</Form.Label>
-            <Form.Control type="text" placeholder="Oslo" 
-                onChange={(e) => changeHandler("location_city", e)}
+            <Form.Control
+              type="text"
+              placeholder="Oslo"
+              onChange={(e) => changeHandler("location_city", e)}
             />
           </Form.Group>
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Zip code</Form.Label>
-            <Form.Control type="text" placeholder="0459" 
-                onChange={(e) => changeHandler("location_zip", e)}
+            <Form.Control
+              type="text"
+              placeholder="0459"
+              onChange={(e) => changeHandler("location_zip", e)}
             />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Country</Form.Label>
-            <Form.Control type="text" placeholder="Norway" 
-                onChange={(e) => changeHandler("location_country", e)}
+            <Form.Control
+              type="text"
+              placeholder="Norway"
+              onChange={(e) => changeHandler("location_country", e)}
             />
           </Form.Group>
         </Row>
-        <Button type="submit" onClick={createVenueListing}>Create venue</Button>
+        <Button type="submit" onClick={createVenueListing}>
+          Create venue
+        </Button>
       </Form>
     </div>
   );

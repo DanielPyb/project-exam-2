@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Avatar from "../components/Profile/Avatar";
 import ForRentListings from "../components/Profile/ForRentListings";
 import { Col, Container, Row } from "react-bootstrap";
@@ -35,7 +35,7 @@ export default function Profile() {
 
   const [biddedListings, setBiddedListings] = useState([]);
   useEffect(() => {
-    async function fetchBiddedListings() {
+    async function fetchProfileBookings() {
       try {
         const fetchedBiddedListings = await APIGetProfileBookings(
           profileName,
@@ -46,24 +46,25 @@ export default function Profile() {
         console.error(error);
       }
     }
-    fetchBiddedListings();
+    fetchProfileBookings();
   }, []);
 
   const [venueListings, setVenueListings] = useState(undefined);
-  useEffect(() => {
-    async function fetchBiddedListings() {
-      try {
-        const fetchedVenueListings = await APIGetProfileVenues(
-          profileName,
-          accessToken
-        );
-        setVenueListings(fetchedVenueListings);
-      } catch (error) {
-        console.error(error);
-      }
+
+  const fetchVenueListings = useCallback(async () => {
+    try {
+      const fetchedVenueListings = await APIGetProfileVenues(
+        profileName,
+        accessToken
+      );
+      setVenueListings(fetchedVenueListings);
+    } catch (error) {
+      console.error(error);
     }
-    fetchBiddedListings();
   }, []);
+  useEffect(() => {
+    fetchVenueListings();
+  }, [fetchVenueListings]);
 
   return (
     <div className="full-view" ref={profileRef}>
@@ -75,7 +76,7 @@ export default function Profile() {
             </Col>
             {profile.venueManager && (
               <Col>
-                <NewVenue />
+                <NewVenue onUpdateVenue={fetchVenueListings} />
               </Col>
             )}
           </Row>
