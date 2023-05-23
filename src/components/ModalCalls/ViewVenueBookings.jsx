@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Modal, ModalFooter } from "react-bootstrap";
+import logo from "../../images/logo.svg";
 
 export default function ViewVenueBookings({ bookedVenueList }) {
   const [show, setShow] = useState(false);
@@ -51,8 +52,14 @@ export default function ViewVenueBookings({ bookedVenueList }) {
         </Button>
       </div>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>HoliDaze</Modal.Title>
+        <Modal.Header>
+          <img
+            src={logo}
+            width={30}
+            className="d-inline-block align-top"
+            alt="holidaze logo"
+          />
+          HoliDaze
         </Modal.Header>
         {sortedList.map((booking) => {
           const startDate = new Date(booking.dateFrom)

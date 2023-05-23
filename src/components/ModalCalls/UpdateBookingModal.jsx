@@ -3,8 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { APIPutBooking } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
+import logo from "../../images/logo.svg";
 
-export default function UpdateBookingModal({ dateFrom, dateTo, guests, id }) {
+export default function UpdateBookingModal({
+  dateFrom,
+  dateTo,
+  guests,
+  id,
+  onUpdateBookings,
+}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,7 +27,8 @@ export default function UpdateBookingModal({ dateFrom, dateTo, guests, id }) {
       dateTo: new Date(newDateTo).toISOString(),
       guests: Number(newGuests),
     };
-    APIPutBooking(bookingObject, id, accessToken);
+    await APIPutBooking(bookingObject, id, accessToken);
+    onUpdateBookings();
     handleClose();
   }
 
@@ -31,8 +39,14 @@ export default function UpdateBookingModal({ dateFrom, dateTo, guests, id }) {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>HoliDaze</Modal.Title>
+        <Modal.Header>
+          <img
+            src={logo}
+            width={30}
+            className="d-inline-block align-top"
+            alt="holidaze logo"
+          />
+          HoliDaze
         </Modal.Header>
         <Modal.Body>
           <Form>

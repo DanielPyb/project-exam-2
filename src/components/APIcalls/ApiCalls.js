@@ -479,8 +479,7 @@ export async function APIDeleteVenue(id, accessToken) {
       `https://nf-api.onrender.com/api/v1/holidaze/venues/` + id,
       options
     );
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to delete venue: " + error.message);
@@ -572,8 +571,7 @@ export async function APIDeleteBooking(id, accessToken) {
       `https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id,
       options
     );
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to delete booking: " + error.message);

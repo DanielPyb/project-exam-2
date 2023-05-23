@@ -121,145 +121,143 @@ export default function NewVenueForm({ onUpdateVenue }) {
   }
 
   return (
-    <div className="burn-form">
-      <Form>
-        <h2>New Venue</h2>
-        <Row className="mb-3">
-          <Form.Group>
-            <Form.Label>Name of venue</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Lovely boat"
-              onChange={(e) => changeHandler("name", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              onChange={(e) => changeHandler("description", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group>
-            <Form.Label>Media, seperated by comma</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="https//nicepictures.com/thisone.jpg"
-              onChange={(e) => changeHandler("media", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col}>
-            <Form.Label>Price per night (kr)</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="200"
-              onChange={(e) => changeHandler("price", e)}
-            />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Max guests</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="2"
-              onChange={(e) => changeHandler("guests", e)}
-            />
-          </Form.Group>
-        </Row>
-        <h3 className="mb-3">Facilities</h3>
-        <Row className="mb-3">
-          <FormGroup>
-            <Form.Check
-              inline
-              label="Wifi"
-              type="checkbox"
-              id={`wifi`}
-              checked={facilities_wifi}
-              onChange={(e) => changeHandler("wifi", e)}
-            />
-            <Form.Check
-              inline
-              label="Parking"
-              type="checkbox"
-              id={`parking`}
-              checked={facilities_parking}
-              onChange={(e) => changeHandler("parking", e)}
-            />
-            <Form.Check
-              inline
-              label="Pet friendly"
-              type="checkbox"
-              id={`pet-friendly`}
-              checked={facilities_pet}
-              onChange={(e) => changeHandler("pet", e)}
-            />
-            <Form.Check
-              inline
-              label="Breakfast"
-              type="checkbox"
-              id={`breakfast`}
-              checked={facilities_breakfast}
-              onChange={(e) => changeHandler("breakfast", e)}
-            />
-          </FormGroup>
-        </Row>
-        <h3 className="mb-3">Location</h3>
-        <Row className="mb-3">
-          <Form.Group>
-            <Form.Label>Continent</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Europe"
-              onChange={(e) => changeHandler("location_continent", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col}>
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Mølleparken 4"
-              onChange={(e) => changeHandler("location_address", e)}
-            />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Oslo"
-              onChange={(e) => changeHandler("location_city", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col}>
-            <Form.Label>Zip code</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="0459"
-              onChange={(e) => changeHandler("location_zip", e)}
-            />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Label>Country</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Norway"
-              onChange={(e) => changeHandler("location_country", e)}
-            />
-          </Form.Group>
-        </Row>
-        <Button type="submit" onClick={createVenueListing}>
-          Create venue
-        </Button>
-      </Form>
-    </div>
+    <Form>
+      <h2>New Venue</h2>
+      <Row className="mb-3">
+        <Form.Group>
+          <Form.Label>Name of venue</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Lovely boat"
+            onChange={(e) => changeHandler("name", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            onChange={(e) => changeHandler("description", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group>
+          <Form.Label>Media, seperated by comma</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="https//nicepictures.com/thisone.jpg"
+            onChange={(e) => changeHandler("media", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col}>
+          <Form.Label>Price per night (kr)</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="200"
+            onChange={(e) => changeHandler("price", e)}
+          />
+        </Form.Group>
+        <Form.Group as={Col}>
+          <Form.Label>Max guests</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="2"
+            onChange={(e) => changeHandler("guests", e)}
+          />
+        </Form.Group>
+      </Row>
+      <h3 className="mb-3">Facilities</h3>
+      <Row className="mb-3">
+        <FormGroup>
+          <Form.Check
+            inline
+            label="Wifi"
+            type="checkbox"
+            id={`wifi`}
+            checked={facilities_wifi}
+            onChange={(e) => changeHandler("wifi", e)}
+          />
+          <Form.Check
+            inline
+            label="Parking"
+            type="checkbox"
+            id={`parking`}
+            checked={facilities_parking}
+            onChange={(e) => changeHandler("parking", e)}
+          />
+          <Form.Check
+            inline
+            label="Pet friendly"
+            type="checkbox"
+            id={`pet-friendly`}
+            checked={facilities_pet}
+            onChange={(e) => changeHandler("pet", e)}
+          />
+          <Form.Check
+            inline
+            label="Breakfast"
+            type="checkbox"
+            id={`breakfast`}
+            checked={facilities_breakfast}
+            onChange={(e) => changeHandler("breakfast", e)}
+          />
+        </FormGroup>
+      </Row>
+      <h3 className="mb-3">Location</h3>
+      <Row className="mb-3">
+        <Form.Group>
+          <Form.Label>Continent</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Europe"
+            onChange={(e) => changeHandler("location_continent", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col}>
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Mølleparken 4"
+            onChange={(e) => changeHandler("location_address", e)}
+          />
+        </Form.Group>
+        <Form.Group as={Col}>
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Oslo"
+            onChange={(e) => changeHandler("location_city", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        <Form.Group as={Col}>
+          <Form.Label>Zip code</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="0459"
+            onChange={(e) => changeHandler("location_zip", e)}
+          />
+        </Form.Group>
+        <Form.Group as={Col}>
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Norway"
+            onChange={(e) => changeHandler("location_country", e)}
+          />
+        </Form.Group>
+      </Row>
+      <Button type="submit" onClick={createVenueListing}>
+        Create venue
+      </Button>
+    </Form>
   );
 }

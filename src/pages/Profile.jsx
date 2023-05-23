@@ -18,39 +18,40 @@ export default function Profile() {
   }, []);
 
   const [profile, setProfile] = useState(undefined);
-  useEffect(() => {
-    async function fetchProfile() {
-      try {
-        const fetchedProfile = await APIGetSingleProfile(
-          profileName,
-          accessToken
-        );
-        setProfile(fetchedProfile);
-      } catch (error) {
-        console.error(error);
-      }
+  const fetchProfile = useCallback(async () => {
+    try {
+      const fetchedProfile = await APIGetSingleProfile(
+        profileName,
+        accessToken
+      );
+      setProfile(fetchedProfile);
+    } catch (error) {
+      console.error(error);
     }
-    fetchProfile();
   }, []);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
 
   const [biddedListings, setBiddedListings] = useState([]);
-  useEffect(() => {
-    async function fetchProfileBookings() {
-      try {
-        const fetchedBiddedListings = await APIGetProfileBookings(
-          profileName,
-          accessToken
-        );
-        setBiddedListings(fetchedBiddedListings);
-      } catch (error) {
-        console.error(error);
-      }
+  const fetchProfileBookings = useCallback(async () => {
+    try {
+      const fetchedBiddedListings = await APIGetProfileBookings(
+        profileName,
+        accessToken
+      );
+      setBiddedListings(fetchedBiddedListings);
+    } catch (error) {
+      console.error(error);
     }
-    fetchProfileBookings();
   }, []);
 
-  const [venueListings, setVenueListings] = useState(undefined);
+  useEffect(() => {
+    fetchProfileBookings();
+  }, [fetchProfileBookings]);
 
+  const [venueListings, setVenueListings] = useState(undefined);
   const fetchVenueListings = useCallback(async () => {
     try {
       const fetchedVenueListings = await APIGetProfileVenues(
@@ -62,6 +63,7 @@ export default function Profile() {
       console.error(error);
     }
   }, []);
+
   useEffect(() => {
     fetchVenueListings();
   }, [fetchVenueListings]);
@@ -72,7 +74,7 @@ export default function Profile() {
         <Container>
           <Row>
             <Col>
-              <Avatar {...profile} />
+              <Avatar {...profile} onUpdateAvatar={fetchProfile} />
             </Col>
             {profile.venueManager && (
               <Col>
@@ -82,10 +84,16 @@ export default function Profile() {
           </Row>
           <Row s={1} lg={2} className="gx-4">
             {venueListings.length >= 1 ? (
-              <ForRentListings list={venueListings} />
+              <ForRentListings
+                list={venueListings}
+                onUpdateVenue={fetchVenueListings}
+              />
             ) : null}
             {biddedListings.length >= 1 ? (
-              <BiddedOnListings list={biddedListings} />
+              <BiddedOnListings
+                list={biddedListings}
+                onUpdateBookings={fetchProfileBookings}
+              />
             ) : null}
           </Row>
         </Container>
