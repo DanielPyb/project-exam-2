@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import RegisterLoginForm from '../components/RegisterLoginForm'
+import RegisterLoginForm from '../components/RegLog/RegisterLoginForm'
 
 export default function LoginRegister() {
   const logregFormRef = useRef(null);

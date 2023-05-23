@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIDeleteBooking } from "../APIcalls/ApiCalls";
+import { APIDeleteVenue } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 import logo from "../../images/logo.svg";
 
-export default function DeleteBookingModal({ id, onUpdateBookings }) {
+export default function DeleteVenueModal({ id, onUpdateVenue }) {
   const [confirmation, setConfirmation] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -15,11 +15,11 @@ export default function DeleteBookingModal({ id, onUpdateBookings }) {
     setConfirmation(e.target.checked);
   }
 
-  async function deleteBooking(e) {
+  async function deleteVenue(e) {
     e.preventDefault();
     if (confirmation) {
-      await APIDeleteBooking(id, accessToken);
-      onUpdateBookings();
+      await APIDeleteVenue(id, accessToken);
+      onUpdateVenue();
       handleClose();
     } else {
       alert("If you really want to delete this, check yes");
@@ -29,7 +29,7 @@ export default function DeleteBookingModal({ id, onUpdateBookings }) {
   return (
     <>
       <Button variant="danger" onClick={handleShow}>
-        Delete Booking
+        Delete Venue
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -44,7 +44,7 @@ export default function DeleteBookingModal({ id, onUpdateBookings }) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <h2>Delete Booking</h2>
+            <h2>Delete Venue</h2>
             <Row className="mb-3">
               <Form.Group as={Col}>
                 <Form.Label>Are you sure?</Form.Label>
@@ -57,7 +57,7 @@ export default function DeleteBookingModal({ id, onUpdateBookings }) {
                 />
               </Form.Group>
             </Row>
-            <Button variant="danger" onClick={deleteBooking}>
+            <Button variant="danger" onClick={deleteVenue}>
               Delete venue
             </Button>
           </Form>

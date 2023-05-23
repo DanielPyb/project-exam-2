@@ -1,45 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react'
-import ListItems from '../components/ListItems'
-import { Col, Container, Row } from 'react-bootstrap';
-import { Search } from '../components/Search';
-import { APIGetHolidazeVenues } from '../components/APIcalls/ApiCalls';
-
-
+import React, { useEffect, useRef, useState } from "react";
+import ListItems from "../components/List/ListItems";
+import { Col, Container, Row } from "react-bootstrap";
+import { Search } from "../components/List/Search";
+import { APIGetHolidazeVenues } from "../components/APIcalls/ApiCalls";
 
 export default function HolidayListPage() {
-    const [items, setItems] = useState([]);
-    const listRef = useRef(null);
+  const [items, setItems] = useState([]);
+  const listRef = useRef(null);
 
-    useEffect(() => {
-      listRef.current.scrollIntoView({ behavior: "smooth" });
-    }, []);
+  useEffect(() => {
+    listRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
-
-    useEffect(() => {
-      async function fetchVenues() {
-        try{
-          const venues = await APIGetHolidazeVenues();
-          setItems(venues);
-        } catch (error) {
-          console.error(error);
-        }
+  useEffect(() => {
+    async function fetchVenues() {
+      try {
+        const venues = await APIGetHolidazeVenues();
+        setItems(venues);
+      } catch (error) {
+        console.error(error);
       }
-      fetchVenues();
-    },[]);
-    return (
+    }
+    fetchVenues();
+  }, []);
+  return (
     <>
-    <div className='full-view' ref={listRef}>
-    <Container>
-    <Search items={items}/>
-    <Row xs={1} md={2} lg={3} xl={4}>
-        {items.map((item) => (
-            <Col key={item.key}>
-                <ListItems {...item} />
-            </Col>
-        ))}
-    </Row>
-    </Container>
-    </div>
+      <div className="full-view" ref={listRef}>
+        <Container>
+          <Row xs={1} lg={2}>
+            <Search items={items} />
+          </Row>
+          <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+            {items.map((item) => (
+              <Col key={item.key}>
+                <ListItems listItemObject={item} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
     </>
-  )
+  );
 }

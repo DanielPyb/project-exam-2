@@ -1,42 +1,33 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIPutBooking } from "../APIcalls/ApiCalls";
+import { APIBookingPost  } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 import logo from "../../images/logo.svg";
 
-export default function UpdateBookingModal({
-  dateFrom,
-  dateTo,
-  guests,
-  id,
-  onUpdateBookings,
-}) {
+export default function CreateBookingModal({ venueId }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [newDateFrom, setDateFrom] = useState(dateFrom);
-  const [newDateTo, setDateTo] = useState(dateTo);
-  const [newGuests, setGuests] = useState(guests);
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
+  const [guests, setGuests] = useState(0);
 
-  async function updateBooking(e) {
+  async function createBooking(e) {
     e.preventDefault();
     const bookingObject = {
-      dateFrom: new Date(newDateFrom).toISOString(),
-      dateTo: new Date(newDateTo).toISOString(),
-      guests: Number(newGuests),
+      dateFrom: new Date(dateFrom).toISOString(),
+      dateTo: new Date(dateTo).toISOString(),
+      guests: Number(guests),
+      venueId,
     };
-    await APIPutBooking(bookingObject, id, accessToken);
-    onUpdateBookings();
-    handleClose();
+    APIBookingPost(bookingObject, accessToken);
   }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Update Booking
-      </Button>
+      <Button onClick={handleShow}>Book!</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -50,13 +41,13 @@ export default function UpdateBookingModal({
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <h2>Update Booking</h2>
-            <Row className="mb-3">
+            <h2>Create Booking</h2>
+            <Row className="mb-3" xs={1} lg={3}>
               <Form.Group as={Col}>
                 <Form.Label>From</Form.Label>
                 <Form.Control
                   type="date"
-                  value={newDateFrom}
+                  value={dateFrom}
                   onChange={(e) => setDateFrom(e.target.value)}
                 />
               </Form.Group>
@@ -64,7 +55,7 @@ export default function UpdateBookingModal({
                 <Form.Label>To</Form.Label>
                 <Form.Control
                   type="date"
-                  value={newDateTo}
+                  value={dateTo}
                   onChange={(e) => setDateTo(e.target.value)}
                 />
               </Form.Group>
@@ -72,14 +63,14 @@ export default function UpdateBookingModal({
                 <Form.Label>Guests</Form.Label>
                 <Form.Control
                   type="number"
-                  value={newGuests}
+                  value={guests}
                   onChange={(e) => setGuests(e.target.value)}
-                  placeholder={newGuests}
+                  placeholder="5"
                 />
               </Form.Group>
             </Row>
-            <Button type="submit" onClick={updateBooking}>
-              Update venue
+            <Button type="submit" variant="dark" onClick={createBooking}>
+              Book
             </Button>
           </Form>
         </Modal.Body>

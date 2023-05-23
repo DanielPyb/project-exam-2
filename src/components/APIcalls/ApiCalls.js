@@ -1,26 +1,25 @@
 // Auth
 
-export async function APILogin(email, password) {
-    const loginObject = {
-        email,
-        password
-    }
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(loginObject)
-    };
-    try {
-            const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/auth/login", options);
-            const data = await response.json();
-            return data
-    } catch(error) {
-        console.error(error);
-        throw new Error("Failed to login: " + error.message);
-    }
-    /* returned value should be 
+export async function APILogin(loginObject) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginObject),
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/auth/login",
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to login: " + error.message);
+  }
+  /* returned value should be 
         {
         "name": "string",
         "email": "user@example.com",
@@ -31,31 +30,26 @@ export async function APILogin(email, password) {
     */
 }
 
-export async function APIRegisterAccount(email, password, name, avatar, venueManager) {
-    const registerObject = {
-        email,
-        password,
-        name,
-        avatar,
-        venueManager
-    }
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(registerObject)
-    };
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/auth/register", options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to register: " + error.message);
-    }
-        /* returned value should be 
+export async function APIRegisterAccount(registerObject) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(registerObject),
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/auth/register",
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to register: " + error.message);
+  }
+  /* returned value should be 
     {
         "id": 0,
         "name": "string",
@@ -68,24 +62,26 @@ export async function APIRegisterAccount(email, password, name, avatar, venueMan
 
 // Profile
 
-export async function APIGetProfiles(accessToken){
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        }
-    };
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles", options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get profile list: " + error.message);
-    }
-            /* returned value should be 
+export async function APIGetProfiles(accessToken) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/profiles",
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get profile list: " + error.message);
+  }
+  /* returned value should be 
 [
   {
     "name": "string",
@@ -160,24 +156,26 @@ export async function APIGetProfiles(accessToken){
     */
 }
 
-export async function APIGetSingleProfile(name, accessToken){
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        }
-    };
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name, options );
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get profile list: " + error.message);
-    }
-            /* returned value should be 
+export async function APIGetSingleProfile(name, accessToken) {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get profile list: " + error.message);
+  }
+  /* returned value should be 
 {
   "name": "pmnX_h36rhL5OvxPuNjd",
   "email": "user@example.com",
@@ -250,28 +248,30 @@ export async function APIGetSingleProfile(name, accessToken){
     */
 }
 
-export async function APIChangeAvatar(name, avatar, accessToken){
-    const changeObject = {
-        avatar
-    }
-    const options = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify(changeObject)
-    };
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/profiles/${name}/media`, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to update: " + error.message);
-    }
-        /* returned value should be 
+export async function APIChangeAvatar(name, avatar, accessToken) {
+  const changeObject = {
+    avatar,
+  };
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(changeObject),
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/profiles/${name}/media`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to update: " + error.message);
+  }
+  /* returned value should be 
     {
 {
   "name": "J2v8OeJ4n1B17SHjL_zR",
@@ -346,210 +346,234 @@ export async function APIChangeAvatar(name, avatar, accessToken){
     */
 }
 
-export async function APIGetProfileVenues(name, accessToken){
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        }
-    };
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/venues", options );
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get list of venues: " + error.message);
-    } 
+export async function APIGetProfileVenues(name, accessToken) {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/profiles/" +
+        name +
+        "/venues?_bookings=true",
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get list of venues: " + error.message);
+  }
 }
 
-export async function APIGetProfileBookings(name, accessToken){
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        }
-    };
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/profiles/" + name + "/bookings?_venue=true", options );
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get list of bookings: " + error.message);
-    } 
+export async function APIGetProfileBookings(name, accessToken) {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/profiles/" +
+        name +
+        "/bookings?_venue=true",
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get list of bookings: " + error.message);
+  }
 }
 
 // Venues
 
-export async function APIGetHolidazeVenues(){
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/venues");
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get venue list: " + error.message);
-    }
+export async function APIGetHolidazeVenues() {
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/venues"
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get venue list: " + error.message);
+  }
 }
 
-export async function APIGetSingleVenue(id){
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/venues/" + id);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get venue list: " + error.message);
-    }
+export async function APIGetSingleVenue(id) {
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/venues/" +
+        id +
+        "/?_bookings=true"
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get venue list: " + error.message);
+  }
 }
 
-export async function APIPostVenue(venueDetails, accessToken){
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify(venueDetails)
-    };
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues`, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to post venue: " + error.message);
-    }
+export async function APIPostVenue(venueDetails, accessToken) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(venueDetails),
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to post venue: " + error.message);
+  }
 }
 
-export async function APIPutVenue(venueDetails, id, accessToken){
-    const options = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify(venueDetails)
-    };
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues/` + id, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to update venue: " + error.message);
-    }
+export async function APIPutVenue(venueDetails, id, accessToken) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(venueDetails),
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues/` + id,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to update venue: " + error.message);
+  }
 }
 
-export async function APIDeleteVenue(id, accessToken){
-    const options = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-    }
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/venues/` + id, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to delete venue: " + error.message);
-    }
+export async function APIDeleteVenue(id, accessToken) {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/venues/` + id,
+      options
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to delete venue: " + error.message);
+  }
 }
 
 // Booking
 
-export async function APIBooking(){
-    try{
-        const response = await fetch("https://nf-api.onrender.com/api/v1/holidaze/bookings");
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get booking list: " + error.message);
-    }
+export async function APIBooking() {
+  try {
+    const response = await fetch(
+      "https://nf-api.onrender.com/api/v1/holidaze/bookings"
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get booking list: " + error.message);
+  }
 }
 
-export async function APIBookingPost(bookingDetails, accessToken){
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        } ,
-        body: JSON.stringify(bookingDetails)
-    };
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings`, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to book: " + error.message);
-    }
+export async function APIBookingPost(bookingDetails, accessToken) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(bookingDetails),
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/bookings`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to book: " + error.message);
+  }
 }
 
-export async function APISingleBooking(id){
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings/${id}`);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to get booking: " + error.message);
-    }
+export async function APISingleBooking(id) {
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/bookings/${id}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get booking: " + error.message);
+  }
 }
 
-export async function APIPutBooking(bookingDetails, id, accessToken){
-    const options = {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-        body: JSON.stringify(bookingDetails)
-    };
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to update booking: " + error.message);
-    }
+export async function APIPutBooking(bookingDetails, id, accessToken) {
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(bookingDetails),
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to update booking: " + error.message);
+  }
 }
 
-export async function APIDeleteBooking(id, accessToken){
-    const options = {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`
-        },
-    }
-    try{
-        const response = await fetch(`https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id, options);
-        const data = await response.json();
-        return data
-    }
-    catch(error) {
-        console.error(error);
-        throw new Error("Failed to delete booking: " + error.message);
-    }
+export async function APIDeleteBooking(id, accessToken) {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      `https://nf-api.onrender.com/api/v1/holidaze/bookings/` + id,
+      options
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to delete booking: " + error.message);
+  }
 }
