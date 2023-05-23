@@ -27,11 +27,13 @@ export default function HolidayListPage() {
     <>
       <div className="full-view" ref={listRef}>
         <Container>
-          <Search items={items} />
+          <Row xs={1} lg={2}>
+            <Search items={items} />
+          </Row>
           <Row xs={1} md={2} lg={3} xl={4} className="g-4">
             {items.map((item) => (
               <Col key={item.key}>
-                <ListItems {...item} />
+                <ListItems listItemObject={item} />
               </Col>
             ))}
           </Row>

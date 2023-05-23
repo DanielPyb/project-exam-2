@@ -2,14 +2,8 @@ import React from "react";
 import { Row, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function ListItems({
-  id,
-  name,
-  description,
-  media,
-  price,
-  location,
-}) {
+export default function ListItems({ listItemObject }) {
+  const { id, name, description, media, price, location } = listItemObject;
   return (
     <Card className="h-100">
       <Card.Img variant="top" src={media[0]} className="burn-cards-image" />

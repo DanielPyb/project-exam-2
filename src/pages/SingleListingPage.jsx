@@ -27,7 +27,7 @@ export default function SingleListingPage() {
     <div className="full-view" ref={listingRef}>
       {listing ? (
         <div>
-          <SingelListing {...listing} />
+          <SingelListing listingInfo={listing} />
         </div>
       ) : (
         <div>Loading</div>

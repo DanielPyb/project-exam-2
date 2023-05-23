@@ -3,16 +3,10 @@ import ImageCaroussel from "./ImageCaroussel";
 import CreateBookingModal from "../ModalCalls/CreateBookingModal";
 import PickedDates from "../APIcalls/PickedDates";
 
-export default function SingelListing({
-  name,
-  description,
-  media,
-  location,
-  price,
-  id,
-  meta,
-  bookings,
-}) {
+export default function SingelListing({ listingInfo }) {
+  //deconstructing object for cleaner code
+  const { name, description, media, location, price, id, meta, bookings } =
+    listingInfo;
   return (
     <>
       <Container>
