@@ -69,37 +69,39 @@ export default function Profile() {
   }, [fetchVenueListings]);
 
   return (
-    <div className="full-view" ref={profileRef}>
-      {profile && venueListings && biddedListings ? (
-        <Container>
-          <Row>
-            <Col>
-              <Avatar {...profile} onUpdateAvatar={fetchProfile} />
-            </Col>
-            {profile.venueManager && (
+    <div className="flower-background">
+      <div className="full-view" ref={profileRef}>
+        {profile && venueListings && biddedListings ? (
+          <Container>
+            <Row>
               <Col>
-                <NewVenue onUpdateVenue={fetchVenueListings} />
+                <Avatar {...profile} onUpdateAvatar={fetchProfile} />
               </Col>
-            )}
-          </Row>
-          <Row s={1} lg={2} className="gx-4">
-            {venueListings.length >= 1 ? (
-              <ForRentListings
-                list={venueListings}
-                onUpdateVenue={fetchVenueListings}
-              />
-            ) : null}
-            {biddedListings.length >= 1 ? (
-              <BiddedOnListings
-                list={biddedListings}
-                onUpdateBookings={fetchProfileBookings}
-              />
-            ) : null}
-          </Row>
-        </Container>
-      ) : (
-        <div> loading </div>
-      )}
+              {profile.venueManager && (
+                <Col>
+                  <NewVenue onUpdateVenue={fetchVenueListings} />
+                </Col>
+              )}
+            </Row>
+            <Row s={1} lg={2} className="gx-4">
+              {venueListings.length >= 1 ? (
+                <ForRentListings
+                  list={venueListings}
+                  onUpdateVenue={fetchVenueListings}
+                />
+              ) : null}
+              {biddedListings.length >= 1 ? (
+                <BiddedOnListings
+                  list={biddedListings}
+                  onUpdateBookings={fetchProfileBookings}
+                />
+              ) : null}
+            </Row>
+          </Container>
+        ) : (
+          <div> loading </div>
+        )}
+      </div>
     </div>
   );
 }

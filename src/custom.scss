@@ -13,9 +13,7 @@ $white: rgb(255, 253, 253);
 .burn-form {
   max-width: 500px;
   background: rgba(255, 253, 253, 0.95);
-  margin: 5px;
   padding: 20px;
-  margin-top: 40px;
   border: 1px solid rgba(176, 81, 144, 0.4);
   box-shadow: 4px 4px 4px rgba(176, 81, 144, 0.25);
   border-radius: 10px;
@@ -114,6 +112,7 @@ input[type="email"] {
 }
 
 #logreg-form {
+  padding-top: 50px;
   max-width: 500px;
   margin: auto;
   height: 100vh;
@@ -166,5 +165,27 @@ input[type="email"] {
 
 .mute {
   background-color: #fc4444;
+}
+
+.flower-background {
+  background: url(images/Flower.png), url("images/pictures.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed, fixed;
+  background-position: 0 0, 0 0;
+  animation: backgroundAnimation 15s infinite linear;
+  width: 100%;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 0 50px, 0 -10px;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+  }
 }
 @import "~bootstrap/scss/bootstrap.scss";

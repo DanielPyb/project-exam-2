@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIBookingPost  } from "../APIcalls/ApiCalls";
+import { APIBookingPost } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 import logo from "../../images/logo.svg";
+import { Link } from "react-router-dom";
 
 export default function CreateBookingModal({ venueId }) {
   const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ export default function CreateBookingModal({ venueId }) {
       guests: Number(guests),
       venueId,
     };
-    APIBookingPost(bookingObject, accessToken);
+    await APIBookingPost(bookingObject, accessToken);
   }
 
   return (

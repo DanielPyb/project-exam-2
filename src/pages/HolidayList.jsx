@@ -25,19 +25,21 @@ export default function HolidayListPage() {
   }, []);
   return (
     <>
-      <div className="full-view" ref={listRef}>
-        <Container>
-          <Row xs={1} lg={2}>
-            <Search items={items} />
-          </Row>
-          <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-            {items.map((item) => (
-              <Col key={item.key}>
-                <ListItems listItemObject={item} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
+      <div className="flower-background">
+        <div className="full-view" ref={listRef}>
+          <Container>
+            <Row xs={1} lg={2}>
+              <Search items={items} />
+            </Row>
+            <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+              {items.map((item) => (
+                <Col key={item.key}>
+                  <ListItems listItemObject={item} />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </div>
       </div>
     </>
   );
