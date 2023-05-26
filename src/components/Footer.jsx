@@ -11,10 +11,10 @@ export default function Footer() {
         <p>Made by Daniel Sollid</p>
         <Row>
         <Col>
-        <p>LinkedIn</p>
+        <p><a href="https://www.linkedin.com/in/pybus/" className='link-social'>LinkedIn</a></p>
         </Col>
         <Col>
-        <p>Github</p>
+        <p><a href="https://github.com/DanielPyb" className='link-social'>Github</a></p>
         </Col>
         </Row>
         </div>

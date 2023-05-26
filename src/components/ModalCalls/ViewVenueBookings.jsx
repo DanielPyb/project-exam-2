@@ -47,7 +47,7 @@ export default function ViewVenueBookings({ bookedVenueList }) {
   return (
     <>
       <div className="d-grid gap-0">
-        <Button variant="secondary" onClick={handleShow}>
+        <Button variant="dark" onClick={handleShow}>
           View planned vacations
         </Button>
       </div>

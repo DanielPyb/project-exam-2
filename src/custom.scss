@@ -1,6 +1,6 @@
 $black: #1a0f0c;
-$primary: #b05190;
-$secondary: #de66b6;
+$primary: #a639d9;
+$secondary: #cd59ff;
 $gray-200: #dbd4d4;
 $gray-500: #9a9190;
 $gray-800: #392e2c;
@@ -39,8 +39,7 @@ input[type="email"] {
 
 .landing-page {
   height: 100vh;
-  background: url(images/landing_page.png);
-  background-position: 0px -600px;
+  background: url(images/Backgroundv_3.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -50,31 +49,36 @@ input[type="email"] {
   margin: 0 auto;
   text-align: center;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero button {
-  width: 100%;
-  font-size: 3rem;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1rem;
 }
 
 .hero-title {
-  font-size: 120px;
+  font-size: 64px;
   color: $white;
   font-weight: 900;
   text-shadow: 1px 1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary,
     -1px -1px 0 $primary, 1px 0px 0 $primary, 0px 1px 0 $primary, -1px 0px 0,
     0px -1px 0 $primary;
   padding: 0;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+  margin-top: 40px;
 }
 
 .hero-text {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 56px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
   padding: 0;
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+  color: $black;
 }
 
 .hero-link a {
@@ -145,11 +149,22 @@ input[type="email"] {
   padding-top: 24px;
 }
 
+.list-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .line-clamp-5 {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.muted-text {
+  color: $gray-500;
 }
 
 .border-bot {
@@ -163,8 +178,11 @@ input[type="email"] {
   border-bottom: none;
 }
 
-.mute {
-  background-color: #fc4444;
+.card-footer-pink {
+  background-color: $primary !important;
+  color: $white !important;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .flower-background {
@@ -188,4 +206,12 @@ input[type="email"] {
     background-position: 0 0, 0 0;
   }
 }
+.card-footer-pink a {
+  color: $white !important;
+}
+
+.link-social {
+  color: $white;
+}
+
 @import "~bootstrap/scss/bootstrap.scss";

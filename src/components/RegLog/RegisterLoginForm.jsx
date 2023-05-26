@@ -18,9 +18,6 @@ export default function RegisterLoginForm() {
       ) : (
         <RegisterForm key="register" toggleForm={visibleFormToggle} />
       )}
-      <Button variant="outline-primary" onClick={visibleFormToggle}>
-        Change Form
-      </Button>
     </>
   );
 }
