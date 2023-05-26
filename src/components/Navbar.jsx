@@ -1,11 +1,20 @@
 import React from "react";
 import { Navbar as NavbarBs } from "react-bootstrap";
 import { Nav, Container } from "react-bootstrap";
-import { accessToken } from "./APIcalls/accessToken";
 import LogoutBtn from "./RegLog/LogOutBtn";
 import LogInBtn from "./RegLog/LogInBtn";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  //wanted to keep the accessstoken from the jsx file, but rerendering was easier with grabbing the key in this case
+  const accessToken = localStorage.getItem("accessToken");
+  const navigate = useNavigate();
+  function handleLogout() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("profileName");
+    navigate("/");
+  }
+
   return (
     <NavbarBs bg="primary" expand="lg" variant="dark">
       <Container fluid>
@@ -16,8 +25,11 @@ export default function Navbar() {
             <Nav.Link href="/listings">Listings</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
           </Nav>
-          {accessToken && <LogoutBtn />}
-          {!accessToken && <LogInBtn />}
+          {accessToken ? (
+            <LogoutBtn handleLogout={handleLogout} />
+          ) : (
+            <LogInBtn />
+          )}
         </NavbarBs.Collapse>
       </Container>
     </NavbarBs>

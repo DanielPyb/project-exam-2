@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { APILogin } from "../APIcalls/ApiCalls.js";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ toggleForm }) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
@@ -40,12 +43,11 @@ export default function LoginForm({ toggleForm }) {
     try {
       const loginDetails = await APILogin(loginObject);
       if (loginDetails.accessToken) {
-        console.log(loginDetails);
         localStorage.setItem("profileName", loginDetails.name);
         localStorage.setItem("accessToken", loginDetails.accessToken);
+        navigate("/listings");
       } else {
         setLoginError(loginDetails.errors[0].message);
-        console.log(loginDetails);
       }
     } catch (error) {
       console.error(error);

@@ -1,13 +1,8 @@
 import { Button } from "react-bootstrap";
 
-export default function LogoutBtn() {
-  function logOut() {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("profileName");
-  }
-
+export default function LogoutBtn({ handleLogout = { handleLogout } }) {
   return (
-    <Button variant="dark" onClick={logOut}>
+    <Button variant="dark" onClick={handleLogout}>
       Log out
     </Button>
   );

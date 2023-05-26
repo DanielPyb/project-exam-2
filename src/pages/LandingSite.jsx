@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import holidazeVideo from "../images/Holidaze.mp4";
 
 export default function LandingSite() {
   const landingRef = useRef(null);
