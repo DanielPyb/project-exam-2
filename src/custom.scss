@@ -20,14 +20,26 @@ $breakpoint-monitor: 992px;
   }
 }
 
+@mixin bigphone {
+  @media (min-width: 450px) and (max-width: 610px) {
+    @content;
+  }
+}
+
 @mixin tablet {
-  @media (min-width: #{$breakpoint-mobile + 1}) and (max-width: $breakpoint-tablet) {
+  @media (min-width: 611px) and (max-width: $breakpoint-tablet) {
     @content;
   }
 }
 
 @mixin monitor {
   @media (min-width: #{$breakpoint-tablet + 1}) {
+    @content;
+  }
+}
+
+@mixin xlscreen {
+  @media (min-width: 1100px) {
     @content;
   }
 }
@@ -78,15 +90,22 @@ input[type="email"] {
 // landing page //
 
 .landing-page {
-  height: 100vh;
+  min-height: 100vh;
   background: url(images/Backgroundv_3.png);
   background-repeat: no-repeat;
   background-size: cover;
+  transition: background-position 0.5s ease-in-out;
+  @include bigphone() {
+    background-position: 0 -100px;
+  }
   @include tablet() {
     background-position: 0 -250px;
   }
   @include monitor() {
-    background-position: 0 -1150px;
+    background-position: 0 -350px;
+  }
+  @include xlscreen() {
+    background-position: 0 -700px;
   }
 }
 .hero {
@@ -106,7 +125,7 @@ input[type="email"] {
 }
 
 .hero-title {
-  font-size: 64px;
+  font-size: 54px;
   color: $white;
   font-weight: 900;
   text-shadow: 1px 1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary,
@@ -115,6 +134,12 @@ input[type="email"] {
   padding: 0;
   margin-bottom: 8px;
   margin-top: 40px;
+  @include tablet() {
+    font-size: 88px;
+  }
+  @include monitor() {
+    font-size: 120px;
+  }
 }
 
 .hero-text {
@@ -251,7 +276,7 @@ input[type="email"] {
     background-size: cover;
     background-attachment: fixed;
     background-position: 0 0, 0 0, 0 0;
-    animation: backgroundAnimation 15s infinite linear;
+    animation: backgroundAnimation 10s infinite ease-in-out;
     width: 100%;
     z-index: 1;
   }

@@ -24,7 +24,10 @@ export default function NewVenue({ onUpdateVenue }) {
           HoliDaze
         </Modal.Header>
         <Modal.Body>
-          <NewVenueForm onUpdateVenue={onUpdateVenue} />
+          <NewVenueForm
+            onUpdateVenue={onUpdateVenue}
+            handleClose={handleClose}
+          />
         </Modal.Body>
       </Modal>
     </>

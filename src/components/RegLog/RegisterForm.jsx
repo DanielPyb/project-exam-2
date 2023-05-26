@@ -12,6 +12,7 @@ export default function RegisterForm({ toggleForm }) {
   const [emailError, setEmailError] = useState(null);
   const [avatarError, setAvatarError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+  const [registerError, setRegisterError] = useState(null);
 
   function nameHandler(e) {
     setName(e.target.value);
@@ -39,11 +40,6 @@ export default function RegisterForm({ toggleForm }) {
   }
   function avatarHandler(e) {
     setAvatar(e.target.value);
-    if (!avatar) {
-      setAvatarError("Please give a link to a photo");
-    } else {
-      setAvatarError("");
-    }
   }
   function venueMangerSwitch(e) {
     setVenueManager(e.target.checked);
@@ -68,9 +64,17 @@ export default function RegisterForm({ toggleForm }) {
     }
     const registerObject = { name, email, avatar, venueManager, password };
     e.preventDefault();
-    console.log(registerObject);
-    APIRegisterAccount(registerObject);
-    toggleForm();
+    try {
+      const registeredObj = await APIRegisterAccount(registerObject);
+      if ([200, 201, 202, 203, 204].includes(registeredObj.statusCode)) {
+        setRegisterError(null);
+        toggleForm();
+      } else {
+        setRegisterError(registeredObj.errors[0].message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -146,6 +150,7 @@ export default function RegisterForm({ toggleForm }) {
           />
         </Row>
         <Button onClick={registerAccount}>REGISTER</Button>
+        {registerError && <p className="text-danger">{registerError}</p>}
       </Form>
     </div>
   );

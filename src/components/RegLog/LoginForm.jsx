@@ -7,6 +7,7 @@ export default function LoginForm({ toggleForm }) {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
 
   function emailHandler(e) {
     setEmail(e.target.value);
@@ -36,10 +37,19 @@ export default function LoginForm({ toggleForm }) {
     }
     const loginObject = { email, password };
     e.preventDefault();
-    const loginDetails = await APILogin(loginObject);
-    console.log(loginDetails);
-    localStorage.setItem("profileName", loginDetails.name);
-    localStorage.setItem("accessToken", loginDetails.accessToken);
+    try {
+      const loginDetails = await APILogin(loginObject);
+      if (loginDetails.accessToken) {
+        console.log(loginDetails);
+        localStorage.setItem("profileName", loginDetails.name);
+        localStorage.setItem("accessToken", loginDetails.accessToken);
+      } else {
+        setLoginError(loginDetails.errors[0].message);
+        console.log(loginDetails);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -82,6 +92,7 @@ export default function LoginForm({ toggleForm }) {
           </Form.Group>
         </Row>
         <Button onClick={logIn}>LOGIN</Button>
+        {loginError && <p className="text-danger">{loginError}</p>}
       </Form>
     </div>
   );

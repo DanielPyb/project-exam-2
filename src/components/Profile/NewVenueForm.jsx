@@ -3,7 +3,7 @@ import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 import { APIPostVenue } from "../APIcalls/ApiCalls";
 import { accessToken } from "../APIcalls/accessToken";
 
-export default function NewVenueForm({ onUpdateVenue }) {
+export default function NewVenueForm({ onUpdateVenue, handleClose }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [media, setMedia] = useState("");
@@ -29,19 +29,6 @@ export default function NewVenueForm({ onUpdateVenue }) {
   const [mediaError, setMediaError] = useState(null);
   const [priceError, setPriceError] = useState(null);
   const [guestsError, setGuestsError] = useState(null);
-
-  //facilities states
-  const [facilities_wifiError, setFacilities_wifiError] = useState(null);
-  const [facilities_parkingError, setFacilities_parkingError] = useState(null);
-  const [facilities_petError, setFacilities_petError] = useState(null);
-  const [facilities_breakfastError, setFacilities_breakfastError] =
-    useState(null);
-  //location states
-  const [location_continentError, setLocation_continentError] = useState(null);
-  const [location_addressError, setLocation_addressError] = useState(null);
-  const [location_cityError, setLocation_cityError] = useState(null);
-  const [location_zipError, setLocation_zipError] = useState(null);
-  const [location_countryError, setLocation_countryError] = useState(null);
 
   //Handler
   function changeHandler(key, e) {
@@ -115,9 +102,14 @@ export default function NewVenueForm({ onUpdateVenue }) {
         continent: location_continent,
       },
     };
-    await APIPostVenue(venueObject, accessToken);
-    onUpdateVenue();
-    console.log(venueObject);
+    try {
+      await APIPostVenue(venueObject, accessToken);
+      onUpdateVenue();
+      handleClose();
+    } catch (error) {
+      console.log(error);
+      console.log(venueObject);
+    }
   }
 
   return (
