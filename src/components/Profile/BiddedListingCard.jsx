@@ -19,7 +19,7 @@ export default function BiddedListingCard({ item, onUpdateBookings }) {
         </Link>
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-            <h2>{item.venue.name}</h2>
+            <h2 className="list-title">{item.venue.name}</h2>
           </Card.Title>
           <div>
             <span>
@@ -42,6 +42,11 @@ export default function BiddedListingCard({ item, onUpdateBookings }) {
             </Col>
           </Row>
         </Card.Body>
+        <Card.Footer>
+          <p className="text-center">
+            <strong>HoliDaze</strong>
+          </p>
+        </Card.Footer>
       </Card>
     </Col>
   );

@@ -18,7 +18,7 @@ export default function RentedListingsCard({ item, onUpdateVenue }) {
         </Link>
         <Card.Body className="d-flex flex-column">
           <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-            <h2>{item.name}</h2>
+            <h2 className="list-title">{item.name}</h2>
           </Card.Title>
           <div>
             <span>Max guests: {item.maxGuests}</span>

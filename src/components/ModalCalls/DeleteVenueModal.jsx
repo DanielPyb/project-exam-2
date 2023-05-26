@@ -29,7 +29,7 @@ export default function DeleteVenueModal({ id, onUpdateVenue }) {
   return (
     <>
       <Button variant="danger" onClick={handleShow}>
-        Delete Venue
+        Delete
       </Button>
 
       <Modal show={show} onHide={handleClose}>

@@ -29,7 +29,7 @@ export default function DeleteBookingModal({ id, onUpdateBookings }) {
   return (
     <>
       <Button variant="danger" onClick={handleShow}>
-        Delete Booking
+        Delete
       </Button>
 
       <Modal show={show} onHide={handleClose}>

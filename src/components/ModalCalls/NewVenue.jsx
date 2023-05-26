@@ -9,9 +9,9 @@ export default function NewVenue({ onUpdateVenue }) {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        New Venue
-      </Button>
+      <button onClick={handleShow} className="btn-big">
+        +
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>

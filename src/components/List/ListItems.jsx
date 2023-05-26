@@ -14,10 +14,11 @@ export default function ListItems({ listItemObject }) {
         <p className="line-clamp-5">{description}</p>
         <Row>
           <Col>
-            <h5>{price},-</h5> 
+            <h5>{price},-</h5>
             <p>per night</p>
           </Col>
           <Col>
+            <h5>Location</h5>
             <p className="muted-text">
               {location.country} - {location.city}
             </p>

@@ -120,7 +120,7 @@ export default function UpdateVenueModal({ venueDetails, onUpdateVenue }) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Update listing
+        Update
       </Button>
 
       <Modal show={show} onHide={handleClose}>

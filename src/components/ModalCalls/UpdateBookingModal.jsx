@@ -35,7 +35,7 @@ export default function UpdateBookingModal({
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Update Booking
+        Update
       </Button>
 
       <Modal show={show} onHide={handleClose}>

@@ -10,6 +10,46 @@ $green: #00c9a5;
 $modal-backdrop-bg: $primary;
 $white: rgb(255, 253, 253);
 
+$breakpoint-mobile: 450px;
+$breakpoint-tablet: 768px;
+$breakpoint-monitor: 992px;
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile + 1}) and (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin monitor {
+  @media (min-width: #{$breakpoint-tablet + 1}) {
+    @content;
+  }
+}
+
+h1 {
+  padding-bottom: 32px;
+}
+
+.btn-big {
+  margin-top: 16px;
+  font-size: 2.5rem;
+  color: $white;
+  background-color: $green;
+  border: none;
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+  @include tablet() {
+    margin-top: 0;
+  }
+}
+
 .burn-form {
   max-width: 500px;
   background: rgba(255, 253, 253, 0.95);
@@ -42,6 +82,12 @@ input[type="email"] {
   background: url(images/Backgroundv_3.png);
   background-repeat: no-repeat;
   background-size: cover;
+  @include tablet() {
+    background-position: 0 -250px;
+  }
+  @include monitor() {
+    background-position: 0 -1150px;
+  }
 }
 .hero {
   min-width: 226px;
@@ -147,6 +193,7 @@ input[type="email"] {
 .full-view {
   min-height: 100vh;
   padding-top: 24px;
+  padding-bottom: 40px;
 }
 
 .list-title {
@@ -184,15 +231,38 @@ input[type="email"] {
   padding-top: 10px;
   text-align: center;
 }
+.flower-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 253, 253, 0.75);
+  z-index: -1;
+}
 
 .flower-background {
-  background: url(images/Flower.png), url("images/pictures.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed, fixed;
-  background-position: 0 0, 0 0;
-  animation: backgroundAnimation 15s infinite linear;
-  width: 100%;
+  position: relative;
+  background: $white;
+  @include monitor() {
+    background: url("images/Flower.png"), url("images/pictures.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 0 0, 0 0, 0 0;
+    animation: backgroundAnimation 15s infinite linear;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.card-footer-pink a {
+  color: $white !important;
+}
+
+.link-social {
+  color: $white;
 }
 
 @keyframes backgroundAnimation {
@@ -205,13 +275,6 @@ input[type="email"] {
   100% {
     background-position: 0 0, 0 0;
   }
-}
-.card-footer-pink a {
-  color: $white !important;
-}
-
-.link-social {
-  color: $white;
 }
 
 @import "~bootstrap/scss/bootstrap.scss";
