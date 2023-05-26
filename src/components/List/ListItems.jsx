@@ -8,22 +8,23 @@ export default function ListItems({ listItemObject }) {
     <Card className="h-100">
       <Card.Img variant="top" src={media[0]} className="burn-cards-image" />
       <Card.Body className="d-flex flex-column">
-        <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-          <h2>{name}</h2>
+        <Card.Title className="d-flex justify-content-between align-items-baseline mb-4 ">
+          <h2 className="list-title">{name}</h2>
         </Card.Title>
         <p className="line-clamp-5">{description}</p>
         <Row>
           <Col>
-            <p>{price},- per night</p>
+            <h5>{price},-</h5> 
+            <p>per night</p>
           </Col>
           <Col>
-            <p>
+            <p className="muted-text">
               {location.country} - {location.city}
             </p>
           </Col>
         </Row>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="card-footer-pink">
         <Link to={`${id}`}>Check out more</Link>
       </Card.Footer>
     </Card>
