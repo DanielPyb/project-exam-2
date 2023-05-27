@@ -3,7 +3,7 @@ import { Navbar as NavbarBs } from "react-bootstrap";
 import { Nav, Container } from "react-bootstrap";
 import LogoutBtn from "./RegLog/LogOutBtn";
 import LogInBtn from "./RegLog/LogInBtn";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   //wanted to keep the accessstoken from the jsx file, but rerendering was easier with grabbing the key in this case
@@ -22,8 +22,12 @@ export default function Navbar() {
         <NavbarBs.Toggle aria-controls="navbar-nav" />
         <NavbarBs.Collapse id="navbar-nav">
           <Nav className="me-auto" style={{ maxHeight: "100px" }}>
-            <Nav.Link href="/listings">Listings</Nav.Link>
-            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Link to="/listings" className="nav-link">
+              Listings
+            </Link>
+            <Link to="/profile" className="nav-link">
+              Profile
+            </Link>
           </Nav>
           {accessToken ? (
             <LogoutBtn handleLogout={handleLogout} />

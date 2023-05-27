@@ -21,32 +21,38 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
   const [location_zip, setLocation_zip] = useState("");
   const [location_country, setLocation_country] = useState("");
 
-  //Todo facilities = {wifi, parking, pet, breakfast}
-  //Todo location = {continent, address, city, zip, country}
-
   const [nameError, setNameError] = useState(null);
   const [descriptionError, setDescriptionError] = useState(null);
   const [mediaError, setMediaError] = useState(null);
   const [priceError, setPriceError] = useState(null);
   const [guestsError, setGuestsError] = useState(null);
 
+  //registrationError
+
+  const [registrationError, setRegistrationError] = useState("");
+
   //Handler
   function changeHandler(key, e) {
     switch (key) {
       case "name":
         setName(e.target.value);
+        setNameError("");
         break;
       case "description":
         setDescription(e.target.value);
+        setDescriptionError("");
         break;
       case "media":
         setMedia(e.target.value.split(","));
+        setMediaError("");
         break;
       case "price":
         setPrice(e.target.value);
+        setPriceError("");
         break;
       case "guests":
         setGuests(e.target.value);
+        setGuestsError("");
         break;
       case "wifi":
         setFacilities_wifi(e.target.checked);
@@ -82,6 +88,26 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
 
   async function createVenueListing(e) {
     e.preventDefault();
+    if (!name) {
+      setNameError("Name of venue is needed");
+      return;
+    }
+    if (!description) {
+      setDescriptionError("Please provide a description");
+      return;
+    }
+    if (!media) {
+      setMediaError("We cannot put out a venue without pictures");
+      return;
+    }
+    if (!price) {
+      setPriceError("We need an amount for the stay");
+      return;
+    }
+    if (!guests) {
+      setGuestsError("We need to know the max amount of guests");
+      return;
+    }
     const venueObject = {
       name,
       description,
@@ -103,12 +129,15 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
       },
     };
     try {
-      await APIPostVenue(venueObject, accessToken);
-      onUpdateVenue();
-      handleClose();
+      const APIResponse = await APIPostVenue(venueObject, accessToken);
+      if (APIResponse.created) {
+        onUpdateVenue();
+        handleClose();
+      } else {
+        setRegistrationError(APIResponse.errors[0].message);
+      }
     } catch (error) {
       console.log(error);
-      console.log(venueObject);
     }
   }
 
@@ -123,6 +152,7 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
             placeholder="Lovely boat"
             onChange={(e) => changeHandler("name", e)}
           />
+          {nameError && <span className="text-danger">{nameError}</span>}
         </Form.Group>
       </Row>
       <Row className="mb-3">
@@ -133,6 +163,9 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
             rows={3}
             onChange={(e) => changeHandler("description", e)}
           />
+          {descriptionError && (
+            <span className="text-danger">{descriptionError}</span>
+          )}
         </Form.Group>
       </Row>
       <Row className="mb-3">
@@ -143,6 +176,7 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
             placeholder="https//nicepictures.com/thisone.jpg"
             onChange={(e) => changeHandler("media", e)}
           />
+          {mediaError && <span className="text-danger">{mediaError}</span>}
         </Form.Group>
       </Row>
       <Row className="mb-3">
@@ -153,6 +187,7 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
             placeholder="200"
             onChange={(e) => changeHandler("price", e)}
           />
+          {priceError && <span className="text-danger">{priceError}</span>}
         </Form.Group>
         <Form.Group as={Col}>
           <Form.Label>Max guests</Form.Label>
@@ -161,6 +196,7 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
             placeholder="2"
             onChange={(e) => changeHandler("guests", e)}
           />
+          {guestsError && <span className="text-danger">{guestsError}</span>}
         </Form.Group>
       </Row>
       <h3 className="mb-3">Facilities</h3>
@@ -250,6 +286,9 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
       <Button type="submit" onClick={createVenueListing}>
         Create venue
       </Button>
+      {registrationError && (
+        <span className="text-danger">{registrationError}</span>
+      )}
     </Form>
   );
 }
