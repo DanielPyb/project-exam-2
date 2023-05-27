@@ -302,4 +302,14 @@ input[type="email"] {
   }
 }
 
+.hoverable {
+  text-decoration: underline;
+  color: #9a9190;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+  color: $primary;
+}
+
 @import "~bootstrap/scss/bootstrap.scss";

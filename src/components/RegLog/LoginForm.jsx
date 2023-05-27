@@ -59,7 +59,7 @@ export default function LoginForm({ toggleForm }) {
       <Form>
         <Row>
           <Col>
-            <h2 className="text-muted" onClick={toggleForm}>
+            <h2 className="hoverable" onClick={toggleForm}>
               Register
             </h2>
           </Col>
