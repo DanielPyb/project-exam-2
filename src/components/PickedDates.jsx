@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDatePicker from "react-datepicker";
-
 export default function PickedDates({ bookings }) {
   const mutedDates = bookings.reduce((dates, booking) => {
     const { dateFrom, dateTo } = booking;

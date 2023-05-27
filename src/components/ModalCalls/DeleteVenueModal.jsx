@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIDeleteVenue } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIDeleteVenue } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 import logo from "../../images/logo.svg";
 
 export default function DeleteVenueModal({ id, onUpdateVenue }) {
   const [confirmation, setConfirmation] = useState(false);
   const [show, setShow] = useState(false);
+  
+  //modal handling
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

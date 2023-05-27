@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Modal, Row } from "react-bootstrap";
-import { APIPutVenue } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIPutVenue } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 import logo from "../../images/logo.svg";
 
 export default function UpdateVenueModal({ venueDetails, onUpdateVenue }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [name, setName] = useState(venueDetails.name);
   const [description, setDescription] = useState(venueDetails.description);
   const [media, setMedia] = useState(venueDetails.media);
   const [price, setPrice] = useState(venueDetails.price);
   const [guests, setGuests] = useState(venueDetails.maxGuests);
+
+  //Modal handling
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   //facilities states
   const [facilities_wifi, setFacilities_wifi] = useState(
     venueDetails.meta.wifi

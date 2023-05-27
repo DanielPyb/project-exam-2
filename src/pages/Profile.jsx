@@ -7,17 +7,17 @@ import {
   APIGetProfileBookings,
   APIGetProfileVenues,
   APIGetSingleProfile,
-} from "../components/APIcalls/ApiCalls";
-import { accessToken, profileName } from "../components/APIcalls/accessToken";
+} from "../utilities/ApiCalls";
+import { accessToken, profileName } from "../utilities/accessToken";
 import NewVenue from "../components/ModalCalls/NewVenue";
 
 export default function Profile() {
   const profileRef = useRef(null);
-  useEffect(() => {
-    profileRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
-
   const [profile, setProfile] = useState(undefined);
+  const [biddedListings, setBiddedListings] = useState([]);
+  const [venueListings, setVenueListings] = useState(undefined);
+
+
   const fetchProfile = useCallback(async () => {
     try {
       const fetchedProfile = await APIGetSingleProfile(
@@ -29,12 +29,6 @@ export default function Profile() {
       console.error(error);
     }
   }, []);
-
-  useEffect(() => {
-    fetchProfile();
-  }, [fetchProfile]);
-
-  const [biddedListings, setBiddedListings] = useState([]);
   const fetchProfileBookings = useCallback(async () => {
     try {
       const fetchedBiddedListings = await APIGetProfileBookings(
@@ -46,12 +40,6 @@ export default function Profile() {
       console.error(error);
     }
   }, []);
-
-  useEffect(() => {
-    fetchProfileBookings();
-  }, [fetchProfileBookings]);
-
-  const [venueListings, setVenueListings] = useState(undefined);
   const fetchVenueListings = useCallback(async () => {
     try {
       const fetchedVenueListings = await APIGetProfileVenues(
@@ -64,6 +52,17 @@ export default function Profile() {
     }
   }, []);
 
+
+  useEffect(() => {
+    profileRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+  useEffect(() => {
+    fetchProfileBookings();
+  }, [fetchProfileBookings]);
   useEffect(() => {
     fetchVenueListings();
   }, [fetchVenueListings]);

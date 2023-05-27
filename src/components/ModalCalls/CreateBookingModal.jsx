@@ -1,29 +1,49 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIBookingPost } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIBookingPost } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 import logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateBookingModal({ venueId }) {
   const [show, setShow] = useState(false);
+  const [bookingError, setBookingError] = useState("");
+
+  const navigate = useNavigate();
+
+  //Modal handling
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //destructured object that will be used for the bookingObject
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [guests, setGuests] = useState(0);
 
   async function createBooking(e) {
     e.preventDefault();
+    setBookingError("");
     const bookingObject = {
       dateFrom: new Date(dateFrom).toISOString(),
       dateTo: new Date(dateTo).toISOString(),
       guests: Number(guests),
       venueId,
     };
-    await APIBookingPost(bookingObject, accessToken);
+    console.log(bookingObject);
+    try {
+    const postResponse = await APIBookingPost(bookingObject, accessToken);
+    if(postResponse.created){
+      navigate("/profile")
+    }
+    else{
+      console.log(postResponse);
+      setBookingError(postResponse.status)
+    }
+  }
+    catch(error){
+    console.error(error);
+  }
   }
 
   return (
@@ -73,6 +93,7 @@ export default function CreateBookingModal({ venueId }) {
             <Button type="submit" variant="dark" onClick={createBooking}>
               Book
             </Button>
+            {bookingError && <p className="text-danger">{bookingError}</p>}
           </Form>
         </Modal.Body>
       </Modal>

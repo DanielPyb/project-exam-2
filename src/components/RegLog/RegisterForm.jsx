@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIRegisterAccount } from "../APIcalls/ApiCalls";
+import { APIRegisterAccount } from "../../utilities/ApiCalls";
 
 export default function RegisterForm({ toggleForm }) {
   const [name, setName] = useState("");
@@ -14,37 +14,33 @@ export default function RegisterForm({ toggleForm }) {
   const [passwordError, setPasswordError] = useState(null);
   const [registerError, setRegisterError] = useState(null);
 
-  function nameHandler(e) {
-    setName(e.target.value);
-    if (!name) {
-      setNameError("Name is required.");
-    } else {
-      setNameError("");
-    }
-  }
-  function emailHandler(e) {
-    setEmail(e.target.value);
-    if (!email) {
-      setEmailError("Email is required.");
-    } else {
-      setEmailError("");
-    }
-  }
-  function passwordHandler(e) {
-    setPassword(e.target.value);
-    if (password.length < 8) {
-      setPasswordError("Password must be longer than 8 symbols");
-    } else {
-      setPasswordError("");
-    }
-  }
-  function avatarHandler(e) {
-    setAvatar(e.target.value);
-  }
-  function venueMangerSwitch(e) {
-    setVenueManager(e.target.checked);
-  }
 
+// changeHandler
+  function changeHandler(key, e){
+    switch (key) {
+      case "name":
+        setName(e.target.value);
+        setNameError("");
+        break;
+      case "email":
+        setEmail(e.target.value);
+        setEmailError("");
+        break;
+      case "password":
+        setPassword(e.target.value);
+        setPasswordError("");
+        break;
+      case "avatar":
+        setAvatar(e.target.value);
+        setAvatarError("");
+        break;
+      case "venueManager":
+        setVenueManager(e.target.checked);
+        break;
+      default:
+        break;
+  }
+}
   async function registerAccount(e) {
     if (!name) {
       setNameError("Name is required");
@@ -66,7 +62,7 @@ export default function RegisterForm({ toggleForm }) {
     e.preventDefault();
     try {
       const registeredObj = await APIRegisterAccount(registerObject);
-      if ([200, 201, 202, 203, 204].includes(registeredObj.statusCode)) {
+      if (registeredObj.id) {
         setRegisterError(null);
         toggleForm();
       } else {
@@ -96,7 +92,7 @@ export default function RegisterForm({ toggleForm }) {
             <Form.Control
               type="text"
               placeholder="ola nordmann"
-              onChange={nameHandler}
+              onChange={(e) => changeHandler("name", e)}
               isInvalid={Boolean(nameError)}
             />
             {nameError && <span className="text-danger">{nameError}</span>}
@@ -108,7 +104,7 @@ export default function RegisterForm({ toggleForm }) {
             <Form.Control
               type="email"
               placeholder="boat@stud.noroff.no"
-              onChange={emailHandler}
+              onChange={(e) => changeHandler("email", e)}
               isInvalid={Boolean(emailError)}
             />
             {emailError && <span className="text-danger">{emailError}</span>}
@@ -120,7 +116,7 @@ export default function RegisterForm({ toggleForm }) {
             <Form.Control
               type="password"
               placeholder="Super secret"
-              onChange={passwordHandler}
+              onChange={(e) => changeHandler("password", e)}
               isInvalid={Boolean(passwordError)}
             />
             {passwordError && (
@@ -134,7 +130,7 @@ export default function RegisterForm({ toggleForm }) {
             <Form.Control
               type="text"
               placeholder="https//nicepictures.com/thisone.jpg"
-              onChange={avatarHandler}
+              onChange={(e) => changeHandler("avatar", e)}
               isInvalid={Boolean(avatarError)}
             />
             {avatarError && <span className="text-danger">{avatarError}</span>}
@@ -146,7 +142,7 @@ export default function RegisterForm({ toggleForm }) {
             id="venue-manager"
             label="Venue Manager"
             checked={venueManager}
-            onChange={venueMangerSwitch}
+            onChange={(e) => changeHandler("venueManager", e)}
           />
         </Row>
         <Button onClick={registerAccount}>REGISTER</Button>

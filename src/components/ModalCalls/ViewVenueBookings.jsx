@@ -4,6 +4,8 @@ import logo from "../../images/logo.svg";
 
 export default function ViewVenueBookings({ bookedVenueList }) {
   const [show, setShow] = useState(false);
+ 
+  //Modal handling
   const handleClose = () => setShow(false);
   const handleShow = () => {
     calculateTotalValue();

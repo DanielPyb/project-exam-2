@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APILogin } from "../APIcalls/ApiCalls.js";
+import { APILogin } from "../../utilities/ApiCalls";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ toggleForm }) {
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
   const [loginError, setLoginError] = useState(null);
+
+  const navigate = useNavigate();
 
   function emailHandler(e) {
     setEmail(e.target.value);
@@ -28,7 +28,6 @@ export default function LoginForm({ toggleForm }) {
       setPasswordError("");
     }
   }
-
   async function logIn(e) {
     if (!email) {
       setEmailError("Please provide valid email");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
-import { APIPostVenue } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIPostVenue } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 
 export default function NewVenueForm({ onUpdateVenue, handleClose }) {
   const [name, setName] = useState("");
@@ -20,15 +20,13 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
   const [location_city, setLocation_city] = useState("");
   const [location_zip, setLocation_zip] = useState("");
   const [location_country, setLocation_country] = useState("");
-
+  //errir states
   const [nameError, setNameError] = useState(null);
   const [descriptionError, setDescriptionError] = useState(null);
   const [mediaError, setMediaError] = useState(null);
   const [priceError, setPriceError] = useState(null);
   const [guestsError, setGuestsError] = useState(null);
-
   //registrationError
-
   const [registrationError, setRegistrationError] = useState("");
 
   //Handler
@@ -137,7 +135,7 @@ export default function NewVenueForm({ onUpdateVenue, handleClose }) {
         setRegistrationError(APIResponse.errors[0].message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

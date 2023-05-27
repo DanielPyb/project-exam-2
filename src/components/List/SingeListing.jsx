@@ -1,7 +1,8 @@
 import { Row, Col, Container } from "react-bootstrap";
 import ImageCaroussel from "./ImageCaroussel";
 import CreateBookingModal from "../ModalCalls/CreateBookingModal";
-import PickedDates from "../APIcalls/PickedDates";
+import PickedDates from "../PickedDates";
+
 
 export default function SingelListing({ listingInfo }) {
   //deconstructing object for cleaner code

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import NewVenueForm from "../Profile/NewVenueForm";
+import { Modal } from "react-bootstrap";
 import logo from "../../images/logo.svg";
+import NewVenueForm from "../Profile/NewVenueForm";
+
 
 export default function NewVenue({ onUpdateVenue }) {
   const [show, setShow] = useState(false);
+  
+   //modal handling
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (

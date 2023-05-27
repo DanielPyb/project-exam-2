@@ -3,7 +3,6 @@ import BiddedListingCard from "./BiddedListingCard";
 import { Row, Col } from "react-bootstrap";
 
 export default function BiddedOnListings({ list, onUpdateBookings }) {
-  console.log(list);
   const sortedList = [...list].sort((a, b) => {
     const dateA = new Date(a.dateFrom);
     const dateB = new Date(b.dateFrom);

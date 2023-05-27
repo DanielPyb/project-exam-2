@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { APIPutBooking } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIPutBooking } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 import logo from "../../images/logo.svg";
 
 export default function UpdateBookingModal({
@@ -13,12 +13,14 @@ export default function UpdateBookingModal({
   onUpdateBookings,
 }) {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [newDateFrom, setDateFrom] = useState(dateFrom);
   const [newDateTo, setDateTo] = useState(dateTo);
   const [newGuests, setGuests] = useState(guests);
+
+  
+  //Modal handling
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   async function updateBooking(e) {
     e.preventDefault();

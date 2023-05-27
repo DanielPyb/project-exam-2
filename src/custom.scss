@@ -1,3 +1,4 @@
+// created by using boostrap.build/app and then adjusted
 $black: #1a0f0c;
 $primary: #a639d9;
 $secondary: #cd59ff;
@@ -10,6 +11,8 @@ $green: #00c9a5;
 $modal-backdrop-bg: $primary;
 $white: rgb(255, 253, 253);
 
+
+//these are the standard break points in bootstrap 
 $breakpoint-mobile: 450px;
 $breakpoint-tablet: 768px;
 $breakpoint-monitor: 992px;
@@ -20,6 +23,7 @@ $breakpoint-monitor: 992px;
   }
 }
 
+//created this as there were issues with tablet or mobile for this brakpoint on landing page
 @mixin bigphone {
   @media (min-width: 450px) and (max-width: 610px) {
     @content;
@@ -38,6 +42,7 @@ $breakpoint-monitor: 992px;
   }
 }
 
+//created this as there were issues with the monitor mixin on extra large screens
 @mixin xlscreen {
   @media (min-width: 1100px) {
     @content;

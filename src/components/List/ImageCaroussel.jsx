@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Carousel } from 'react-bootstrap';
 
-
 export default function ImageCaroussel({media}) {
   const [idx, setIdx] = useState(0);
+  
   const handleSelect = (selectIndex, e) => {
     setIdx(selectIndex);
   }

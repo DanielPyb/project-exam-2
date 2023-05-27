@@ -2,16 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import ListItems from "../components/List/ListItems";
 import { Col, Container, Row } from "react-bootstrap";
 import { Search } from "../components/List/Search";
-import { APIGetHolidazeVenues } from "../components/APIcalls/ApiCalls";
+import { APIGetHolidazeVenues } from "../utilities/ApiCalls";
 
 export default function HolidayListPage() {
-  const [items, setItems] = useState([]);
   const listRef = useRef(null);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     listRef.current.scrollIntoView({ behavior: "smooth" });
   }, []);
-
   useEffect(() => {
     async function fetchVenues() {
       try {
@@ -23,6 +22,7 @@ export default function HolidayListPage() {
     }
     fetchVenues();
   }, []);
+
   return (
     <>
       <div className="flower-background">

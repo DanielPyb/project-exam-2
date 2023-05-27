@@ -3,7 +3,7 @@ import { Form, FormControl, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
-  //filtered list based on the API list that will not require to make additional API calls
+//filtered list based on the API list that will not require to make additional API calls
   
 //this function will take the items that the API returns so that it can render a listgroup with a link
 export function Search({ items }) {

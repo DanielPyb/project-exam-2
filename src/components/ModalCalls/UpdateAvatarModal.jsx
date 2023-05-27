@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form, Row } from "react-bootstrap";
-import { APIChangeAvatar } from "../APIcalls/ApiCalls";
-import { accessToken } from "../APIcalls/accessToken";
+import { APIChangeAvatar } from "../../utilities/ApiCalls";
+import { accessToken } from "../../utilities/accessToken";
 import logo from "../../images/logo.svg";
 
 export default function UpdateAvatarModal({ name, onUpdateAvatar }) {
-  const [show, setShow] = useState(false);
   const [avatarLink, setAvatarLink] = useState("");
+  const [show, setShow] = useState(false);
+  
+  //modal handling
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function handleAvatarLinkChange(e) {
     e.preventDefault();
     setAvatarLink(e.target.value);
-    console.log(avatarLink);
   }
 
   async function updateAvatar(e) {
@@ -22,7 +23,6 @@ export default function UpdateAvatarModal({ name, onUpdateAvatar }) {
     await APIChangeAvatar(name, avatarLink, accessToken);
     onUpdateAvatar();
     handleClose();
-    console.log(name, avatarLink, accessToken);
   }
 
   return (
